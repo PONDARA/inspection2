@@ -27,7 +27,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    protected $primaryKey = 'user_id';
     /**
      * The attributes that should be cast to native types.
      *
@@ -36,5 +36,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    protected $primaryKey = 'user_id';
 }
