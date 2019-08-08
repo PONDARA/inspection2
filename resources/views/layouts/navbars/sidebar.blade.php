@@ -6,7 +6,8 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+            <img src="storage/logo.png" class="navbar-brand-img" alt="...">
+            <span>Inspection</span>
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -85,11 +86,11 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fab fa-laravel" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Laravel Examples') }}</span>
+                        <i class="fas fa-user-cog" style="color: #f4645f;"></i>
+                        <span class="nav-link-text" style="color: #f4645f;">{{ __('User Management') }}</span>
                     </a>
 
-                    <div class="collapse show" id="navbar-examples">
+                    <div class="collapse off" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile.edit') }}">
