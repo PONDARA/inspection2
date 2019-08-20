@@ -85,12 +85,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                    <a class="nav-link active" href="#navbar-userManagement" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                         <i class="fas fa-user-cog" style="color: #f4645f;"></i>
                         <span class="nav-link-text" style="color: #f4645f;">{{ __('User Management') }}</span>
                     </a>
 
-                    <div class="collapse off" id="navbar-examples">
+                    <div class="collapse off" id="navbar-userManagement">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile.edit') }}">
@@ -107,12 +107,31 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <!-- <a class="nav-link" href="#">
                         <i class="ni ni-planet text-blue"></i> {{ __('KPI') }}
+                    </a> -->
+                    <a class="nav-link active" href="#navbar-kpi" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                        <i class="ni ni-planet text-blue"></i>
+                        <span class="nav-link-text" style="color: #f4645f;">{{ __('KPI') }}</span>
                     </a>
+
+                    <div class="collapse off" id="navbar-kpi">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    {{ __('KPI question') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('kpiManagement')}}">
+                                    {{ __('KPI Management') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('inspectionIndex') }}">
                         <i class="fas fa-clipboard-list text-orange"></i> {{ __('Inspection') }}
                     </a>
                 </li>

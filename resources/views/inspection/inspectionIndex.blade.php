@@ -1,10 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => __('User Management')])
 @section('js')
-    <script type="text/javascript" src="{{asset('js/dashboard.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/inspectionIndex.js')}}"></script>
 @endsection
 @section('content')
     @include('layouts.headers.cards')
-    
+    <div class="container-fluid" style="margin-top: 10px;margin-bottom: 10px">
+        <div class="row">
+            <input class="date form-control" type="text" id="datepicker">
+        </div>
+    </div>
     <div class="container-fluid" style="margin-top: 10px;margin-bottom: 10px">
         <div class="row">
             <div class="col-lg-0 col-sm-4">
@@ -38,9 +42,5 @@
             </div>
         </div>
     </div>
+    @include('layouts.footers.auth')
 @endsection
-
-@push('js')
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-@endpush

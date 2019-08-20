@@ -43,6 +43,14 @@
                                         </span>
                                     @endif
                                 </div>
+                                <div class="form-group">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <select class="form-control" name="gender" id="gender">
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
                                     <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required>

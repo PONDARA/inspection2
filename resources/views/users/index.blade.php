@@ -1,5 +1,7 @@
 @extends('layouts.app', ['title' => __('User Management')])
-
+@section('js')
+    <script type="text/javascript" src="{{asset('js/user_index.js')}}"></script>
+@endsection
 @section('content')
     @include('layouts.headers.cards')
 
@@ -9,11 +11,28 @@
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
-                            <div class="col-8">
-                                <h3 class="mb-0">{{ __('Users') }}</h3>
+                            <div class="col-2">
+                                <select class="custom-select mb-0" id="inputGroupSelect01" >
+                                    <option value="Admin" selected>Admin</option>
+                                    <option value="Stuff">Stuff</option>
+                                    <option value="Security guard">Security guard</option>
+                                </select>
+                                <!-- <h3 class="mb-0">{{ __('Users') }}</h3> -->
                             </div>
-                            <div class="col-4 text-right">
-                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add user') }}</a>
+                            <div class="col-6">
+                                
+                            </div>
+                            <!-- add admin -->
+                            <div class="col-4 text-right" id="add_admin">
+                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add Admin') }}</a>
+                            </div>
+                            <!-- add stuff -->
+                            <div class="col-4 text-right" id="add_stuff">
+                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add Stuff') }}</a>
+                            </div>
+                            <!-- add security guard -->
+                            <div class="col-4 text-right" id="add_security_guard">
+                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add Security Guard') }}</a>
                             </div>
                         </div>
                     </div>
@@ -28,8 +47,8 @@
                             </div>
                         @endif
                     </div>
-
-                    <div class="table-responsive">
+                    <!-- admin table -->
+                    <div class="table-responsive" id="adminTable">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
@@ -66,6 +85,112 @@
                                                     @else
                                                         <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Edit') }}</a>
                                                     @endif
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- stuff table -->
+                    <div class="table-responsive" id="stuffTable">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">{{ __('Name') }}</th>
+                                    <th scope="col">{{ __('Email') }}</th>
+                                    <th scope="col">{{ __('Creation Date') }}</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{ $user->name }}</td>
+                                        <td>
+                                            <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
+                                        </td>
+                                        <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
+                                        <td class="text-right">
+                                            <div class="dropdown">
+                                                <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                   <!--  @if ($user->user_id != auth()->id())
+                                                        <form action="{{ route('user.destroy', $user) }}" method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <a class="dropdown-item" href="#">{{ __('view') }}</a>
+                                                            <a class="dropdown-item" href="{{ route('user.edit', $user) }}">{{ __('Edit') }}</a>
+                                                            <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
+                                                                {{ __('Delete') }}
+                                                            </button>
+                                                        </form>    
+                                                    @else
+                                                        <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Edit') }}</a>
+                                                    @endif -->
+                                                    <a class="dropdown-item" href="{{ route('user.edit', $user) }}">
+                                                        {{ __('Edit') }}</a>
+                                                    <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
+                                                        {{ __('Delete') }}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- security gurad table -->
+                    <div class="table-responsive" id="securityGuardTable">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">{{ __('Name') }}</th>
+                                    <th scope="col">{{ __('Email') }}</th>
+                                    <th scope="col">{{ __('Creation Date') }}</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{ $user->name }}</td>
+                                        <td>
+                                            <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
+                                        </td>
+                                        <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
+                                        <td class="text-right">
+                                            <div class="dropdown">
+                                                <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                    <!-- @if ($user->user_id != auth()->id())
+                                                        <form action="{{ route('user.destroy', $user) }}" method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            
+                                                            <a class="dropdown-item" href="{{ route('user.edit', $user) }}">{{ __('Edit') }}</a>
+                                                            <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
+                                                                {{ __('Delete') }}
+                                                            </button>
+                                                        </form>    
+                                                    @else
+                                                        <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Edit') }}</a>
+                                                    @endif -->
+                                                    <a class="dropdown-item" href="#">
+                                                        {{ __('View') }}
+                                                    </a>
+                                                    <a class="dropdown-item" href="{{ route('user.edit', $user) }}">
+                                                        {{ __('Edit') }}
+                                                    </a>
+                                                    <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
+                                                        {{ __('Delete') }}
+                                                    </button>
                                                 </div>
                                             </div>
                                         </td>

@@ -1,4 +1,4 @@
-<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+<div class="header bg-gradient-primary pb-5 pt-5 pt-md-8">
     <div class="container-fluid">
         <div class="header-body">
             <!-- Card stats -->
@@ -128,7 +128,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Inspection this month</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Inspection</h5>
                                     <span class="h2 font-weight-bold mb-0">320 Total</span>
                                 </div>
                                 <div class="col-auto">
