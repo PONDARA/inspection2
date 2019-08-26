@@ -28,6 +28,24 @@ class UserController extends Controller
     {
         return view('users.create');
     }
+    /**
+     * Show the form for creating a new user
+     *
+     * @return \Illuminate\View\View
+     */
+    public function createStuff()
+    {
+        return view('users.createStuff');
+    }
+    /**
+     * Show the form for creating a new user
+     *
+     * @return \Illuminate\View\View
+     */
+    public function createSecurity()
+    {
+        return view('users.createSecurity');
+    }
 
     /**
      * Store a newly created user in storage
@@ -82,5 +100,32 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));
+    }
+
+    /**
+     * Store a newly created user in storage
+     *
+     * @param  \App\Http\Requests\UserRequest  $request
+     * @param  \App\User  $model
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function storeStuff(UserRequest $request, User $model)
+    {
+        $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
+
+        return redirect()->route('user.index')->withStatus(__('User successfully created.'));
+    }
+    /**
+     * Store a newly created user in storage
+     *
+     * @param  \App\Http\Requests\UserRequest  $request
+     * @param  \App\User  $model
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function storeSecurity(UserRequest $request, User $model)
+    {
+        $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
+
+        return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
 }

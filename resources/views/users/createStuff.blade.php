@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('User Management')])
 
 @section('content')
-    @include('users.partials.header', ['title' => __('Add Admin')])   
+    @include('users.partials.header', ['title' => __('Add Stuff')])   
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('user.store') }}" autocomplete="off">
+                        <form method="post" action="{{ route('user.storeStuff') }}" autocomplete="off">
                             @csrf
                             
                             <h6 class="heading-small text-muted mb-4">{{ __('User information') }}</h6>
@@ -43,19 +43,14 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group{{ $errors->has('gender') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="gender">{{ __('Gender') }}</label>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-email">{{ __('Gender') }}</label>
                                     <div class="input-group input-group-alternative mb-3">
-                                        <select class="form-control form-control-alternative{{ $errors->has('gender') ? ' is-invalid' : '' }}" value="{{ old('gender') }}" required name="gender" id="gender">
+                                        <select class="form-control" name="gender" id="gender">
                                             <option>Male</option>
                                             <option>Female</option>
                                         </select>
                                     </div>
-                                    @if ($errors->has('gender'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('gender') }}</strong>
-                                        </span>
-                                    @endif
                                 </div>
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">{{ __('Password') }}</label>

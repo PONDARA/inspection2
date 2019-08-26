@@ -23,8 +23,8 @@ class HomeController extends Controller
     {
         return view('dashboard');
 
-        // return view('inspection.inspectionIndex');
-        // return view('kpi.kpiManagement');
+        // return view('location');
+        
         
     }
 }

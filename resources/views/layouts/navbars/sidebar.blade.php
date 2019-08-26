@@ -6,7 +6,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="storage/logo.png" class="navbar-brand-img" alt="...">
+            <img src="/storage/logo.png" class="navbar-brand-img" alt="...">
             <span>Inspection</span>
         </a>
         <!-- User -->
@@ -133,6 +133,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('inspectionIndex') }}">
                         <i class="fas fa-clipboard-list text-orange"></i> {{ __('Inspection') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('inspectionIndex') }}">
+                        <i class="fas fa-compass text-green"></i> {{ __('Location') }}
                     </a>
                 </li>
                <!--  <li class="nav-item">

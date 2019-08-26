@@ -28,11 +28,11 @@
                             </div>
                             <!-- add stuff -->
                             <div class="col-4 text-right" id="add_stuff">
-                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add Stuff') }}</a>
+                                <a href="{{ route('user.createStuff') }}" class="btn btn-sm btn-primary">{{ __('Add Stuff') }}</a>
                             </div>
                             <!-- add security guard -->
                             <div class="col-4 text-right" id="add_security_guard">
-                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add Security Guard') }}</a>
+                                <a href="{{ route('user.createSecurity') }}" class="btn btn-sm btn-primary">{{ __('Add Security Guard') }}</a>
                             </div>
                         </div>
                     </div>

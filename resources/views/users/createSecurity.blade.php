@@ -1,7 +1,9 @@
 @extends('layouts.app', ['title' => __('User Management')])
-
+@section('js')
+    <script type="text/javascript" src="{{asset('js/createSecurity.js')}}"></script>
+@endsection
 @section('content')
-    @include('users.partials.header', ['title' => __('Add Admin')])   
+    @include('users.partials.header', ['title' => __('Add Security')])   
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -18,7 +20,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('user.store') }}" autocomplete="off">
+                        <form method="post" action="{{ route('user.storeSecurity') }}" autocomplete="off">
                             @csrf
                             
                             <h6 class="heading-small text-muted mb-4">{{ __('User information') }}</h6>
@@ -33,43 +35,48 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
-                                    <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email') }}" required>
+                                <div class="form-group{{ $errors->has('phoneNumber') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-number">{{ __('Name') }}</label>
+                                    <input type="text" name="name" id="input-number" class="form-control form-control-alternative{{ $errors->has('phoneNumber') ? ' is-invalid' : '' }}" placeholder="{{ __('phoneNumber') }}" value="{{ old('phoneNumber') }}" required autofocus>
 
-                                    @if ($errors->has('email'))
+                                    @if ($errors->has('phoneNumber'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
+                                            <strong>{{ $errors->first('phoneNumber') }}</strong>
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group{{ $errors->has('gender') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="gender">{{ __('Gender') }}</label>
-                                    <div class="input-group input-group-alternative mb-3">
-                                        <select class="form-control form-control-alternative{{ $errors->has('gender') ? ' is-invalid' : '' }}" value="{{ old('gender') }}" required name="gender" id="gender">
-                                            <option>Male</option>
-                                            <option>Female</option>
-                                        </select>
-                                    </div>
-                                    @if ($errors->has('gender'))
+                                <div class="form-group{{ $errors->has('dob') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="datepicker">{{ __('Date of birth') }}</label>
+                                   <input class="date form-control" type="text" id="datepicker" name="dob">
+
+                                    @if ($errors->has('dob'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('gender') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
-                                    <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required>
-                                    
-                                    @if ($errors->has('password'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('password') }}</strong>
+                                            <strong>{{ $errors->first('dob') }}</strong>
                                         </span>
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-control-label" for="input-password-confirmation">{{ __('Confirm Password') }}</label>
-                                    <input type="password" name="password_confirmation" id="input-password-confirmation" class="form-control form-control-alternative" placeholder="{{ __('Confirm Password') }}" value="" required>
+                                    <label class="form-control-label" for="input-email">{{ __('Gender') }}</label>
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <select class="form-control" name="gender" id="gender">
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group{{ $errors->has('location') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="location">{{ __('Location') }}</label>
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <select class="form-control" name="location" id="location">
+                                            <option>location1</option>
+                                            <option>location2</option>
+                                        </select>
+                                    </div>
+                                    @if ($errors->has('location'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('location') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
 
                                 <div class="text-center">

@@ -22,7 +22,7 @@
                                     <i class="fas fa-ellipsis-v" style="color: black"></i>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">View</a>
+                                    <a class="dropdown-item" href="{{(route('inspectionItem'))}}">View</a>
                                     <a class="dropdown-item" href="#">Edit</a>
                                     <button type="button" class="dropdown-item" onclick="deleletInspectiolist()">
                                         {{ __('Delete') }}
