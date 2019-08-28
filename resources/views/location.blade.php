@@ -2,7 +2,7 @@
 @section('js')
     <script type="text/javascript" src="{{asset('js/location.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLtKY4xtB6GyETi9oAwSADuaqt68-RYIc&libraries=places&callback=initialize"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_aYY-tUX0mckLy2RcmP6LNKfn9E5znMY&libraries=places&callback=initialize"></script>
 @endsection
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('css/location.css')}}">
@@ -41,18 +41,9 @@
             <div class="col-lg-0 col-sm-4">
                 
             </div>
-            <!-- map......................... -->
-            <div class="container-fluid text-center">
-                <div class="col-lg-0 col-sm-4">
-                
-                </div>
-                <div class="col-lg-12 col-sm-4 tex-center" >
-                    <div id="map-canvas"></div>
-                </div>
-                <div class="col-lg-0 col-sm-4">
-                    
-                </div>
-            </div>
+        </div>
+        <div class="row">
+            <div id="map-canvas"></div>
         </div>
     </div>
 @endsection

@@ -136,7 +136,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('inspectionIndex') }}">
+                    <a class="nav-link" href="{{ route('location') }}">
                         <i class="fas fa-compass text-green"></i> {{ __('Location') }}
                     </a>
                 </li>
@@ -161,7 +161,7 @@
             <!-- Heading -->
             <h6 class="navbar-heading text-muted">Documentation</h6>
             <!-- Navigation -->
-            <ul class="navbar-nav mb-md-3">
+            <!-- <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
                     <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
                         <i class="ni ni-spaceship"></i> Getting started
@@ -177,7 +177,7 @@
                         <i class="ni ni-ui-04"></i> Components
                     </a>
                 </li>
-            </ul>
+            </ul> -->
         </div>
     </div>
 </nav>

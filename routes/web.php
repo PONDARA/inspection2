@@ -37,5 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('storeStuff', 'userController@storeStuff')->name('user.storeStuff');
 	Route::post('storeSecurity', 'userController@storeSecurity')->name('user.storeSecurity');
 
+	Route::get('location', 'LocationController@showMap')->name('location');
+
 });
 
