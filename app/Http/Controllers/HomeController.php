@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Model\User_inspect;
 
 class HomeController extends Controller
 {

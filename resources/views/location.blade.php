@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('js')
     <script type="text/javascript" src="{{asset('js/location.js')}}"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_aYY-tUX0mckLy2RcmP6LNKfn9E5znMY&v=weekly&libraries=places&callback=initialize"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFuKALeALKxCMxXfsakzJxM0giobJooYc&libraries=places&callback=initialize"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bPopup/0.11.0/jquery.bpopup.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -17,7 +17,7 @@
                 
             </div>
             <div class="col-lg-12 col-sm-4" >
-                <form role="form" method="POST" action="">
+                <form role="form" method="POST" action="#">
                     @csrf
                     <div class="form-group">
                         <label for="map-search">Address</label>
