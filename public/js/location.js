@@ -4,15 +4,15 @@ function initialize() {
 		infoWindow = '',
 		addressEl = document.querySelector( '#map-search' ),
 		latEl = document.querySelector( '.latitude' ),
-		longEl = document.querySelector( '.longitude' ),
+		longEl = document.querySelector( '.longtitude' ),
 		element = document.getElementById( 'map-canvas' );
 	city = document.querySelector( '.reg-input-city' );
 
 	mapOptions = {
 		// How far the maps zooms in.
-		zoom: 8,
+		zoom: 15,
 		// Current Lat and Long position of the pin/
-		center: new google.maps.LatLng( 18.5204, 73.8567 ),
+		center: new google.maps.LatLng( 11.5760393, 104.92305120000003 ),
 		// center : {
 		// 	lat: -34.397,
 		// 	lng: 150.644
@@ -77,7 +77,7 @@ function initialize() {
 
 		// Get the city and set the city input value to the one selected
 		for( var i = 0; i < resultArray.length; i++ ) {
-			if ( resultArray[ i ].types[0] && 'administrative_area_level_2' === resultArray[ i ].types[0] ) {
+			if ( resultArray[ i ].types[0] && 'route' === resultArray[ i ].types[0] ) {
 				citi = resultArray[ i ].long_name;
 				city.value = citi;
 			}
@@ -116,7 +116,7 @@ function initialize() {
 
 				// Get the city and set the city input value to the one selected
 				for( var i = 0; i < resultArray.length; i++ ) {
-					if ( resultArray[ i ].types[0] && 'administrative_area_level_2' === resultArray[ i ].types[0] ) {
+					if ( resultArray[ i ].types[0] && 'route' === resultArray[ i ].types[0] ) {
 						citi = resultArray[ i ].long_name;
 						console.log( citi );
 						city.value = citi;

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Model\User_type;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -69,6 +71,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'gender' => $data['gender'],
             'password' => Hash::make($data['password']),
+            'user_type_id'=>1,
         ]);
     }
 }

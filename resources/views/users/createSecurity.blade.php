@@ -36,7 +36,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group{{ $errors->has('phoneNumber') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-number">{{ __('Name') }}</label>
+                                    <label class="form-control-label" for="input-number">{{ __('Phone number') }}</label>
                                     <input type="text" name="name" id="input-number" class="form-control form-control-alternative{{ $errors->has('phoneNumber') ? ' is-invalid' : '' }}" placeholder="{{ __('phoneNumber') }}" value="{{ old('phoneNumber') }}" required autofocus>
 
                                     @if ($errors->has('phoneNumber'))

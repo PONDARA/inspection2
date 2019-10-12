@@ -39,6 +39,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('storeSecurity', 'UserController@storeSecurity')->name('user.storeSecurity');
 
 	Route::get('location', 'LocationController@showMap')->name('location');
-
+	Route::post('location/addMap', 'LocationController@addMap')->name('locationAddMap');
 });
 // Route::post('/inspectionStore', 'InspectionController@storee')->name('inspectionStore');

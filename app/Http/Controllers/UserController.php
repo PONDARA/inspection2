@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Model\location;
 
 class UserController extends Controller
 {
@@ -16,7 +19,14 @@ class UserController extends Controller
      */
     public function index(User $model)
     {
-        return view('users.index', ['users' => $model->paginate(15)]);
+        $count_admin = DB::table('users')->where('user_type_id',1)->count();
+        $count_stuff = DB::table('users')->where('user_type_id',2)->count();
+        $count_security = DB::table('users')->where('user_type_id',3)->count();
+        $admins = User::where('user_type_id',1)->get();
+        $stuffs =User::where('user_type_id',2)->get();
+        $securitys =User::where('user_type_id',3)->get();
+        $count_inspection = DB::table('user_inspects')->count();
+        return view('users.index', ['users' => $model->paginate(15)],compact('count_admin','count_stuff','count_security','count_inspection','admins','stuffs','securitys'));
     }
 
     /**
@@ -44,6 +54,7 @@ class UserController extends Controller
      */
     public function createSecurity()
     {
+        // $locations=LocationController::all();
         return view('users.createSecurity');
     }
 

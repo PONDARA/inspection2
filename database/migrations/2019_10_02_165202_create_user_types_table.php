@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeyToKpis extends Migration
+class CreateUserTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddForeignKeyToKpis extends Migration
      */
     public function up()
     {
-        Schema::table('kpis', function (Blueprint $table) {
-             $table->foreign('inserter_id')->references('id')->on('users')->onDelete('cascade');
+        Schema::create('user_types', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('user_type');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class AddForeignKeyToKpis extends Migration
      */
     public function down()
     {
-        Schema::table('kpis', function (Blueprint $table) {
-            $table->dropForeign(['inserter_id']);
-        });
+        Schema::dropIfExists('user_types');
     }
 }

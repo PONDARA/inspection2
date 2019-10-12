@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\User_inspect;
 use App\User;
@@ -15,12 +17,18 @@ class InspectionController extends Controller
      */
      public function showIndex()
     {
-        $inspection = user_inspect::all();
-        return view('inspection.inspectionIndex',compact('inspection'));
+        $count_admin = DB::table('users')->where('user_type_id',1)->count();
+        $count_stuff = DB::table('users')->where('user_type_id',2)->count();
+        $count_security = DB::table('users')->where('user_type_id',3)->count();
+        $count_inspection = DB::table('user_inspects')->count();
+        return view('inspection.inspectionIndex',compact('count_admin','count_security','count_stuff','count_inspection'));
     }
-     public function showItem()
+     public function showItem(Request $request)
     {
-        return view('inspection.inspectionItem');
+        $inspections = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->where('user_inspect_id','=',$request->inspectionId)->select('user_inspects.*','name')->get();
+        $inspectorNames = DB::table('user_inspects')->join('users','users.id','=','user_inspects.inspector_id')->where('user_inspect_id','=',$request->inspectionId)->select('user_inspects.*','name')->get();
+        // dd($inspection);
+        return view('inspection.inspectionItem',compact('inspections','inspectorNames'));
     }
      public function storee(Request $request)
     {
@@ -36,7 +44,7 @@ class InspectionController extends Controller
                 $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
                 Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/' . $filename[$i] ) );
               }  
-              for($j=1;$j<count($pawnfiles);$j++){
+              for($j=1;$j<5;$j++){
                  array_push($filename[$j],"null");
               }
             }
@@ -45,7 +53,7 @@ class InspectionController extends Controller
                 $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
                 Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/' . $filename[$i] ) );
               }  
-              for($j=2;$j<count($pawnfiles);$j++){
+              for($j=2;$j<5;$j++){
                  array_push($filename[$j],"null");
               }
             }
@@ -54,7 +62,7 @@ class InspectionController extends Controller
                 $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
                 Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/' . $filename[$i] ) );
               }  
-              for($j=3;$j<count($pawnfiles);$j++){
+              for($j=3;$j<5;$j++){
                  array_push($filename[$j],"null");
               }
             }
@@ -63,17 +71,23 @@ class InspectionController extends Controller
                 $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
                 Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/' . $filename[$i] ) );
               }  
-              for($j=4;$j<count($pawnfiles);$j++){
+              for($j=4;$j<5;$j++){
                  array_push($filename[$j],"null");
               }
             }
+            elseif(count($pawnfiles)==5){
+              for ($i=0;$i<count($pawnfiles);$i++) {
+                $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
+                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/' . $filename[$i] ) );
+              }  
+            }
         }
         else{
-            $filename=['null','null','null'];
+            $filename=['null','null','null','null','null'];
         }
       $inspection = new User_inspect([
         'inspector_id' => $request->get('inspector_id'),
-        'guard_id'=> $request->get('gurard_id'),
+        'guard_id'=> $request->get('guard_id'),
         'comment'=> $request->get('comment'),
         'photo1'=>$filename[0],
         'photo2'=>$filename[1], 
@@ -81,6 +95,7 @@ class InspectionController extends Controller
         'photo4'=>$filename[3],
         'photo5'=>$filename[4],
       ]);
+      $inspection->save();
       return response()->json($request->all());
     }
 

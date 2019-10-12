@@ -1,5 +1,5 @@
 $('.date').datepicker({  
-    format: 'mm-dd-yyyy',
+    dateFormat:'yy-mm-dd',
     changeYear:true,
     changeMonth: true,
     yearRange: '1945:'+(new Date).getFullYear(),

@@ -9,7 +9,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Admin User</h5>
-                                    <span class="h2 font-weight-bold mb-0">100 Total</span>
+                                    <span class="h2 font-weight-bold mb-0">{{$count_admin}} Total</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-success text-white rounded-circle shadow">
@@ -49,7 +49,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Stuff User</h5>
-                                    <span class="h2 font-weight-bold mb-0">120 Total</span>
+                                    <span class="h2 font-weight-bold mb-0">{{$count_stuff}} Total</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
@@ -88,8 +88,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Security User</h5>
-                                    <span class="h2 font-weight-bold mb-0">320 Total</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Security</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{$count_security}} Total</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -129,7 +129,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Inspection</h5>
-                                    <span class="h2 font-weight-bold mb-0">320 Total</span>
+                                    <span class="h2 font-weight-bold mb-0">{{$count_inspection}} Total</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white rounded-circle shadow">

@@ -5,18 +5,20 @@
             <div class="row text-white text-center">
                 <div class="col-lg-4">
                     <p>
-                        {{ __('security guard name') }}
+                        <b>Guard: </b>{{$inspection->name}}
                     </p>
                 </div>
                 <div class="col-lg-4">
                     <p>
-                        {{ __('inspection date') }}
+                        {{$inspection->created_at}}
                     </p>
                 </div>
                 <div class="col-lg-4">
+                    @foreach($inspectorNames as $inspectorName)
                     <p>
-                        {{ __('inspected by') }}
+                        <b>Inspector: </b>{{$inspectorName->name}}
                     </p>
+                    @endforeach
                 </div>
             </div>
         </div>
