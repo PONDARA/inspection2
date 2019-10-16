@@ -42,7 +42,7 @@ class InspectionController extends Controller
             if(count($pawnfiles)==1){
               for ($i=0;$i<count($pawnfiles);$i++) {
                 $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
-                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/' . $filename[$i] ) );
+                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspection/' . $filename[$i] ) );
               }  
               for($j=1;$j<5;$j++){
                  array_push($filename[$j],"null");
@@ -51,7 +51,7 @@ class InspectionController extends Controller
             elseif(count($pawnfiles)==2){
               for ($i=0;$i<count($pawnfiles);$i++) {
                 $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
-                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/' . $filename[$i] ) );
+                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspection/' . $filename[$i] ) );
               }  
               for($j=2;$j<5;$j++){
                  array_push($filename[$j],"null");
@@ -60,7 +60,7 @@ class InspectionController extends Controller
             elseif(count($pawnfiles)==3){
               for ($i=0;$i<count($pawnfiles);$i++) {
                 $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
-                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/' . $filename[$i] ) );
+                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspection/' . $filename[$i] ) );
               }  
               for($j=3;$j<5;$j++){
                  array_push($filename[$j],"null");
@@ -69,7 +69,7 @@ class InspectionController extends Controller
             elseif(count($pawnfiles)==4){
               for ($i=0;$i<count($pawnfiles);$i++) {
                 $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
-                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/' . $filename[$i] ) );
+                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspection/' . $filename[$i] ) );
               }  
               for($j=4;$j<5;$j++){
                  array_push($filename[$j],"null");
@@ -78,7 +78,7 @@ class InspectionController extends Controller
             elseif(count($pawnfiles)==5){
               for ($i=0;$i<count($pawnfiles);$i++) {
                 $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
-                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/' . $filename[$i] ) );
+                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspection/' . $filename[$i] ) );
               }  
             }
         }

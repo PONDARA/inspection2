@@ -17,13 +17,14 @@ class CreateUsersTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('user_name')->nullable();
-            $table->string('password');
-            $table->string('name');
+            $table->string('password')nullable();
+            $table->string('name')nullable();
             $table->string('dob')->nullable();
+            $table->string('gender');
             $table->string('phone_number')->nullable();
-            $table->dateTime('start_date')->nullable();
-            $table->dateTime('end_date')->nullable();
+            $table->string('profile_img')->nullable();
             $table->unsignedInteger('location_id')->nullable();
+            $table->unsignedInteger('user_type_id')->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

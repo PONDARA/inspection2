@@ -11,6 +11,16 @@
 @endsection
 @section('content')
     @include('layouts.headers.cards')  
+    <div class="col-12">
+        @if (session('status'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('status') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+    </div>
     <div class="container-fluid" style="margin-top: 10px;margin-bottom: 10px">
         <div class="row">
             <div class="col-lg-0 col-sm-4">

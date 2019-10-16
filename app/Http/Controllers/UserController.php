@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Model\location;
-
+use Illuminate\Http\Request;
+use Image;
 class UserController extends Controller
 {
     /**
@@ -54,8 +55,8 @@ class UserController extends Controller
      */
     public function createSecurity()
     {
-        // $locations=LocationController::all();
-        return view('users.createSecurity');
+        $locations=Location::all();
+        return view('users.createSecurity',compact('locations'));
     }
 
     /**
@@ -120,10 +121,25 @@ class UserController extends Controller
      * @param  \App\User  $model
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function storeStuff(UserRequest $request, User $model)
+    public function storeStuff(UserRequest $request)
     {
-        $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
-
+        $request->validate([
+        'name'=>'required|min:3',
+        'gender'=> 'required',
+        'email'=>'required',
+        'password'=>'required|confirmed'
+      ]);
+      $stuff = new User([
+        'name'=>$request->get('name'),
+        'gender'=> $request->get('gender'),
+        'user_type_id' => 2,
+        'email'=>$request->get('email'),
+        'password'=>$request->get('password'),
+        'created_at'=>now(),
+        'updated_at'=>now(),
+        'profile_img'=>'defaul.jpg',
+      ]);
+      $stuff->save();
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
     /**
@@ -133,10 +149,35 @@ class UserController extends Controller
      * @param  \App\User  $model
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function storeSecurity(UserRequest $request, User $model)
+    public function storeSecurity(Request $request)
     {
-        $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
-
+        $request->validate([
+        'name'=>'required|min:3',
+        'phone_number'=>'required',
+        'dob'=>'required',
+        'gender'=> 'required',
+        'location'=>'required',
+      ]);
+        $filename='';
+        if($request->hasFile('profile_img')){
+            $profile_img = $request->file('profile_img');
+            $filename = time() . '.' . $profile_img->getClientOriginalExtension();
+            Image::make($profile_img)->resize(300, 300)->save( public_path('/storage/securityGuard/' . $filename ) );
+        }
+        else{
+            $filename = 'defaul.jpg';
+        }
+      $security = new User([
+            'name'=>$request->get('name'),
+            'phone_number'=> $request->get('phone_number'),
+            'dob'=>$request->get('dob'),
+            'gender'=>$request->get('gender'),
+            'location_id'=>$request->get('location'),
+            'profile_img'=>$filename,
+            'created_at'=>now(),
+            'user_type_id' => 3,
+          ]);
+      $security->save();
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
 }

@@ -11,13 +11,13 @@
     <div class="container-fluid" style="margin-top: 10px">
         <div class="row text-center">
             <div class="col-lg-4 ">
-                <img src="storage/{{$inspection->photo1}}" id="inspectionItemImg">
+                <img src="storage/inspection/{{$inspection->photo1}}" id="inspectionItemImg">
             </div>
             <div class="col-lg-4" >
-               <img src="storage/{{$inspection->photo2}}" id="inspectionItemImg">
+               <img src="storage/inspection/{{$inspection->photo2}}" id="inspectionItemImg">
             </div>
             <div class="col-lg-4 ">
-               <img src="storage/{{$inspection->photo3}}" id="inspectionItemImg">
+               <img src="storage/inspection/{{$inspection->photo3}}" id="inspectionItemImg">
             </div>
         </div>
         <div class="row text-center">
@@ -25,10 +25,10 @@
                 
             </div>
             <div class="col-lg-4 " >
-               <img src="storage/{{$inspection->photo4}}" id="inspectionItemImg">
+               <img src="storage/inspection/{{$inspection->photo4}}" id="inspectionItemImg">
             </div>
             <div class="col-lg-4">
-                <img src="storage/{{$inspection->photo5}}" id="inspectionItemImg">
+                <img src="storage/inspection/{{$inspection->photo5}}" id="inspectionItemImg">
             </div>
             <div class="col-lg-2">
                 

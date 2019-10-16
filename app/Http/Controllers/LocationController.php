@@ -26,6 +26,6 @@ class LocationController extends Controller
         'created_at'=>date('Y-m-d'),
     	]);
     	$location->save();
-      return back();
+      return back()->withStatus(__('location successfully added.'));
     }
 }

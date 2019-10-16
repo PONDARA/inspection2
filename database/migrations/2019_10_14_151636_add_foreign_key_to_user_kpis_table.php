@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeyToUserInspects extends Migration
+class AddForeignKeyToUserKpisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddForeignKeyToUserInspects extends Migration
      */
     public function up()
     {
-        Schema::table('user_inspects', function (Blueprint $table) {
-            $table->foreign('inspector_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('guard_id')->references('id')->on('users')->onDelete('cascade');
+        Schema::table('user_kpis', function (Blueprint $table) {
+            $table->foreign('inspector_id')->references('id')->on('users');
+            $table->foreign('guard_id')->references('id')->on('users');
         });
     }
 
@@ -26,7 +26,7 @@ class AddForeignKeyToUserInspects extends Migration
      */
     public function down()
     {
-        Schema::table('user_inspects', function (Blueprint $table) {
+        Schema::table('user_kpis', function (Blueprint $table) {
             $table->dropForeign(['inspector_id']);
             $table->dropForeign(['guard_id']);
         });

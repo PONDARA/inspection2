@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('home');
 });
 
 Auth::routes();
@@ -35,8 +35,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/user/createStuff', 'userController@createStuff')->name('user.createStuff');
 	Route::get('/user/createSecurity', 'userController@createSecurity')->name('user.createSecurity');
 
-	Route::post('storeStuff', 'UserController@storeStuff')->name('user.storeStuff');
-	Route::post('storeSecurity', 'UserController@storeSecurity')->name('user.storeSecurity');
+	Route::post('/storeStuff', 'UserController@storeStuff')->name('user.storeStuff');
+	Route::post('/storeSecurity', 'UserController@storeSecurity')->name('user.storeSecurity');
 
 	Route::get('location', 'LocationController@showMap')->name('location');
 	Route::post('location/addMap', 'LocationController@addMap')->name('locationAddMap');

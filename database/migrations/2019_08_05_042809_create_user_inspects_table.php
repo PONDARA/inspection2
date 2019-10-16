@@ -23,7 +23,6 @@ class CreateUserInspectsTable extends Migration
             $table->string('photo4');
             $table->string('photo5');
             $table->string('comment');
-            $table->dateTime('date');
             $table->timestamps();
         });
     }
