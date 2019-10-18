@@ -9,7 +9,7 @@ $('.date').datepicker({
     todayBtn: 'linked'
 });
 var currentDate = new Date();  
-$("#datepicker").datepicker("setDate",currentDate);      
+$("#datepicker").datepicker().datepicker("setDate",currentDate);      
 $('#datepicker').change(function () {
 	console.log(this.value);         
 });

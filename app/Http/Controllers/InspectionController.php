@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Model\User_inspect;
 use App\User;
 use Image;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\storage;
 class InspectionController extends Controller
 {
 	/**
@@ -15,13 +17,21 @@ class InspectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function showIndex()
+     public function showIndex(Request $request)
     {
         $count_admin = DB::table('users')->where('user_type_id',1)->count();
         $count_stuff = DB::table('users')->where('user_type_id',2)->count();
         $count_security = DB::table('users')->where('user_type_id',3)->count();
         $count_inspection = DB::table('user_inspects')->count();
-        return view('inspection.inspectionIndex',compact('count_admin','count_security','count_stuff','count_inspection'));
+        if($request->dateSearch == null){
+          $guards = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->where(DB::raw('substr(user_inspects.created_at,1,10)'),'=',date("Y-m-d"))->select('user_inspects.*','users.name')->paginate(10);
+        }
+        else{
+           $guards = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->where(DB::raw('substr(user_inspects.created_at,1,10)'),'=',$request->dateSearch)->select('user_inspects.*','users.name')->paginate(10);
+        }
+        $inspectors = DB::table('user_inspects')->join('users','users.id','=','user_inspects.inspector_id')->select('user_inspects.*','users.name')->get();
+        $countarray=count($guards);
+        return view('inspection.inspectionIndex',compact('count_admin','count_security','count_stuff','count_inspection','guards','inspectors','countarray'));
     }
      public function showItem(Request $request)
     {
@@ -99,11 +109,35 @@ class InspectionController extends Controller
       return response()->json($request->all());
     }
 
-      public function destroy($id)
+    public function securityView(Request $request)
     {
-        $inspection = user_inspect::find($id);
-        $inspection->delete();
-        return redirect('/inspectionIndex')->with('success','inspection record has been deleted successfully');
+        $count_admin = DB::table('users')->where('user_type_id',1)->count();
+        $count_stuff = DB::table('users')->where('user_type_id',2)->count();
+        $count_security = DB::table('users')->where('user_type_id',3)->count();
+        $count_inspection = DB::table('user_inspects')->count();
+        $guards = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->where('user_inspects.guard_id','=',$request->security_id)->select('user_inspects.*','users.name','users.profile_img')->paginate(10);
+        // dd($guards->all());
+        $inspectors = DB::table('user_inspects')->join('users','users.id','=','user_inspects.inspector_id')->where('user_inspects.guard_id','=',$request->security_id)->select('user_inspects.*','users.name')->get();
+        $countarray=count($guards);
+        return view('users.securityView',compact('count_admin','count_security','count_stuff','count_inspection','guards','inspectors','countarray'));
     }
 
+      public function destroy(Request $request)
+    {
+        $inspection = user_inspect::find($request->id);
+        $photo1=$inspection->photo1;
+        $photo2=$inspection->photo2;
+        $photo3=$inspection->photo3;
+        $photo4=$inspection->photo4;
+        $photo5=$inspection->photo5;
+        $inspection->delete();
+        $inispection=array($photo1,$photo2,$photo3,$photo4,$photo5);
+        for($i=0;$i<5;$i++){
+          $profile_imgs_del[$i]='public/inspection/' . $inispection[$i];
+            if(Storage::disk('local')->exists($profile_imgs_del[$i])){
+                    Storage::disk('local')->delete($profile_imgs_del[$i]);
+            }
+          }
+        return back()->withStatus(__('inspection successfully delete.'));
+  }
 }

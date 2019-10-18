@@ -23,9 +23,9 @@ class UserController extends Controller
         $count_admin = DB::table('users')->where('user_type_id',1)->count();
         $count_stuff = DB::table('users')->where('user_type_id',2)->count();
         $count_security = DB::table('users')->where('user_type_id',3)->count();
-        $admins = User::where('user_type_id',1)->get();
-        $stuffs =User::where('user_type_id',2)->get();
-        $securitys =User::where('user_type_id',3)->get();
+        $admins = User::where('user_type_id',1)->paginate(10);
+        $stuffs =User::where('user_type_id',2)->paginate(10);
+        $securitys =User::where('user_type_id',3)->paginate(10);
         $count_inspection = DB::table('user_inspects')->count();
         return view('users.index', ['users' => $model->paginate(15)],compact('count_admin','count_stuff','count_security','count_inspection','admins','stuffs','securitys'));
     }
@@ -134,7 +134,7 @@ class UserController extends Controller
         'gender'=> $request->get('gender'),
         'user_type_id' => 2,
         'email'=>$request->get('email'),
-        'password'=>$request->get('password'),
+        'password'=>Hash::make($request->get('password')),
         'created_at'=>now(),
         'updated_at'=>now(),
         'profile_img'=>'defaul.jpg',
