@@ -14,11 +14,11 @@ class CreateKpisTable extends Migration
     public function up()
     {
         Schema::create('kpis', function (Blueprint $table) {
-            $table->increments('kpi_id');
-            $table->string('question');
-            $table->double('score',10);
-            $table->unsignedInteger('inserter_id');
-            $table->timestamps();
+            $table->increments('id');
+            $table->boolean('publish');
+            $table->date('date');
+
+            $table->unsignedInteger('user_admin_id');
         });
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeyToKpisTable extends Migration
+class CreateAnswerScoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddForeignKeyToKpisTable extends Migration
      */
     public function up()
     {
-        Schema::table('kpis', function (Blueprint $table) {
-             $table->foreign('inserter_id')->references('id')->on('users');
+        Schema::create('answer_scores', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('score');
+
+            $table->unsignedInteger('kpi_user_id');
+            $table->unsignedInteger('question_id');
         });
     }
 
@@ -25,8 +29,6 @@ class AddForeignKeyToKpisTable extends Migration
      */
     public function down()
     {
-        Schema::table('kpis', function (Blueprint $table) {
-            $table->dropForeign(['inserter_id']);
-        });
+        Schema::dropIfExists('answer_scores');
     }
 }

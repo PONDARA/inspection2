@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class user_kpi extends Model
+class Question extends Model
 {
-    protected $primaryKey = 'user_kpi_id';
+    protected $primaryKey = 'id';
 }
