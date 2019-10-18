@@ -30,7 +30,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/inpectionIndex', 'InspectionController@showIndex')->name('inspectionIndex');
 	Route::get('/inpectionItem', 'InspectionController@showItem')->name('inspectionItem');
 
-	Route::get('/kpiManagement', 'kpiManagementController@show')->name('kpiManagement');
+	Route::get('/kpiManagement', 'KpiManagementController@show')->name('kpiManagement');
+	Route::get('kpi/question/form', 'KpiManagementController@getQuestionForm')->name('kpi_create_question');
+	Route::post('kpi/question/handleform', 'KpiManagementController@handleQuestionForm')->name('kpi_create_question_handler');
+
 
 	Route::get('/user/createStuff', 'userController@createStuff')->name('user.createStuff');
 	Route::get('/user/createSecurity', 'userController@createSecurity')->name('user.createSecurity');
@@ -40,5 +43,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('location', 'LocationController@showMap')->name('location');
 	Route::post('location/addMap', 'LocationController@addMap')->name('locationAddMap');
+
 });
 // Route::post('/inspectionStore', 'InspectionController@storee')->name('inspectionStore');

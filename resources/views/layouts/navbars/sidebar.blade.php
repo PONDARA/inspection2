@@ -118,7 +118,7 @@
                     <div class="collapse off" id="navbar-kpi">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('kpi_create_question') }}">
                                     {{ __('KPI question') }}
                                 </a>
                             </li>
