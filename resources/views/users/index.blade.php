@@ -92,6 +92,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <?php echo $admins->render(); ?>
                     </div>
                     <!-- stuff table -->
                     <div class="table-responsive" id="stuffTable">
@@ -133,6 +134,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <?php echo $stuffs->render(); ?>
                     </div>
                     <!-- security gurad table -->
                     <div class="table-responsive" id="securityGuardTable">
@@ -162,6 +164,7 @@
                                                     <form action="{{ route('user.destroy', $security) }}" method="post">
                                                         @csrf
                                                         @method('delete')
+                                                        <a class="dropdown-item" href="{{(route('securityView',['security_id'=>$security->id]))}}">{{ __('View') }}</a>
                                                         <a class="dropdown-item" href="{{ route('user.edit', $security) }}">{{ __('Edit') }}</a>
                                                         <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
                                                                 {{ __('Delete') }}
@@ -174,6 +177,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <?php echo $securitys->render(); ?>
                     </div>
                     <div class="card-footer py-4">
                         <nav class="d-flex justify-content-end" aria-label="...">

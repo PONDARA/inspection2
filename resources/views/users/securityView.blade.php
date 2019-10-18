@@ -3,7 +3,7 @@
     <script type="text/javascript" src="{{asset('js/dashboard.js')}}"></script>
 @endsection
 @section('content')
-    @include('layouts.headers.cards')
+    @include('layouts.headers.securityViewHeader')
 
     <div class="col-12">
         @if (session('status'))
