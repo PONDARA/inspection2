@@ -22,7 +22,7 @@ class InspectionController extends Controller
         $count_admin = DB::table('users')->where('user_type_id',1)->count();
         $count_stuff = DB::table('users')->where('user_type_id',2)->count();
         $count_security = DB::table('users')->where('user_type_id',3)->count();
-        $count_inspection = DB::table('user_inspects')->count();
+        $count_inspection = $guards = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->where(DB::raw('substr(user_inspects.created_at,1,10)'),'=',date("Y-m-d"))->select('user_inspects.*','users.name')->count();
         if($request->dateSearch == null){
           $guards = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->where(DB::raw('substr(user_inspects.created_at,1,10)'),'=',date("Y-m-d"))->select('user_inspects.*','users.name')->paginate(10);
         }
@@ -114,7 +114,7 @@ class InspectionController extends Controller
         $count_admin = DB::table('users')->where('user_type_id',1)->count();
         $count_stuff = DB::table('users')->where('user_type_id',2)->count();
         $count_security = DB::table('users')->where('user_type_id',3)->count();
-        $count_inspection = DB::table('user_inspects')->count();
+       $count_inspection = $guards = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->where(DB::raw('substr(user_inspects.created_at,1,10)'),'=',date("Y-m-d"))->select('user_inspects.*','users.name')->count();
         $guards = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->where('user_inspects.guard_id','=',$request->security_id)->select('user_inspects.*','users.name','users.profile_img')->paginate(10);
         // dd($guards->all());
         $guardHeader = User::where('users.id','=',$request->security_id)->get();
@@ -132,9 +132,9 @@ class InspectionController extends Controller
         $photo4=$inspection->photo4;
         $photo5=$inspection->photo5;
         $inspection->delete();
-        $inispection=array($photo1,$photo2,$photo3,$photo4,$photo5);
+        $inspectionPhoto=array($photo1,$photo2,$photo3,$photo4,$photo5);
         for($i=0;$i<5;$i++){
-          $profile_imgs_del[$i]='public/inspection/' . $inispection[$i];
+          $profile_imgs_del[$i]='public/inspection/' . $inspectionPhoto[$i];
             if(Storage::disk('local')->exists($profile_imgs_del[$i])){
                     Storage::disk('local')->delete($profile_imgs_del[$i]);
             }

@@ -165,7 +165,7 @@
                                                         @csrf
                                                         @method('delete')
                                                         <a class="dropdown-item" href="{{(route('securityView',['security_id'=>$security->id]))}}">{{ __('View') }}</a>
-                                                        <a class="dropdown-item" href="{{ route('user.edit', $security) }}">{{ __('Edit') }}</a>
+                                                        <a class="dropdown-item" href="{{(route('user.editSecutiy',['securityId'=>$security->id]))}}">{{ __('Edit') }}</a>
                                                         <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
                                                                 {{ __('Delete') }}
                                                         </button>
@@ -187,7 +187,5 @@
                 </div>
             </div>
         </div>
-            
-        @include('layouts.footers.auth')
     </div>
 @endsection

@@ -35,11 +35,12 @@
         @endauth
         
         <div class="main-content">
-            @include('layouts.navbars.navbar')
+            @auth()
+                @include('layouts.navbars.navbar')
+            @endauth
             @yield('content')
             @yield('js')
         </div>
-
         @guest()
             @include('layouts.footers.guest')
         @endguest

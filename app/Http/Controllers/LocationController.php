@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Model\location;
+use App\User;
 
 class LocationController extends Controller
 {
@@ -14,8 +15,15 @@ class LocationController extends Controller
     	$count_admin = DB::table('users')->where('user_type_id',1)->count();
         $count_stuff = DB::table('users')->where('user_type_id',2)->count();
         $count_security = DB::table('users')->where('user_type_id',3)->count();
-        $count_inspection = DB::table('user_inspects')->count();
-        return view('location',compact('count_admin','count_stuff','count_security','count_inspection'));
+        $count_inspection = $guards = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->where(DB::raw('substr(user_inspects.created_at,1,10)'),'=',date("Y-m-d"))->select('user_inspects.*','users.name')->count();
+        $locations = DB::table('locations')->paginate(10);
+        // dd($locations);
+        $users = User::where('user_type_id',3)->get();
+        foreach ($users as $user) {
+                $data[] = $user->location_id;
+            }
+        $availables = Location::select('location_id')->orderBy('location_id', 'desc')->whereNotIn('location_id', $data)->get();
+        return view('location',compact('count_admin','count_stuff','count_security','count_inspection','locations','availables'));
     }
     public function addMap(request $request)
     {
@@ -27,5 +35,11 @@ class LocationController extends Controller
     	]);
     	$location->save();
       return back()->withStatus(__('location successfully added.'));
+    }
+     public function destroyMap(request $request)
+    {
+        $location = Location::find($request->location_id);
+        $location->delete();
+        return back()->withStatus(__('location successfully delete.'));
     }
 }
