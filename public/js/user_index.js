@@ -1,9 +1,12 @@
 
-$('#stuffTable').hide();
-$('#securityGuardTable').hide();
-$('#add_stuff').hide();
-$('#add_security_guard').hide();
 $(document).ready(function () {
+    $('#stuffTable').hide();
+    $('#securityGuardTable').hide();
+    $('#add_stuff').hide();
+    $('#add_security_guard').hide();
+    $('#adminTable').show();
+    $('#add_admin').show();
+    $('#inputGroupSelect01')[0].selectedIndex = "0";
             $('#inputGroupSelect01').change(function () {
                 if (this.value == "Admin") {
                     $('#adminTable').show();

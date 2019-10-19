@@ -32,7 +32,7 @@ class HomeController extends Controller
         $guards = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->where(DB::raw('substr(user_inspects.created_at,1,10)'),'=',date("Y-m-d"))->select('user_inspects.*','users.name')->paginate(10);
         $inspectors = DB::table('user_inspects')->join('users','users.id','=','user_inspects.inspector_id')->select('user_inspects.*','users.name')->get();
         $countarray=count($guards);
-        // dd($guards->all());
         return view('dashboard',compact('count_admin','count_security','count_stuff','count_inspection','countarray','guards','inspectors'));
+        // return view('kpi.kpiItem',compact('count_admin','count_security','count_stuff','count_inspection','countarray','guards','inspectors'));
     }
 }

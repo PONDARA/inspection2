@@ -117,9 +117,10 @@ class InspectionController extends Controller
         $count_inspection = DB::table('user_inspects')->count();
         $guards = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->where('user_inspects.guard_id','=',$request->security_id)->select('user_inspects.*','users.name','users.profile_img')->paginate(10);
         // dd($guards->all());
+        $guardHeader = User::where('users.id','=',$request->security_id)->get();
         $inspectors = DB::table('user_inspects')->join('users','users.id','=','user_inspects.inspector_id')->where('user_inspects.guard_id','=',$request->security_id)->select('user_inspects.*','users.name')->get();
         $countarray=count($guards);
-        return view('users.securityView',compact('count_admin','count_security','count_stuff','count_inspection','guards','inspectors','countarray'));
+        return view('users.securityView',compact('count_admin','count_security','count_stuff','count_inspection','guards','inspectors','countarray','guardHeader'));
     }
 
       public function destroy(Request $request)
