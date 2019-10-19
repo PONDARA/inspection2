@@ -29,7 +29,6 @@ class KpiManagementController extends Controller
         }
     }
 
-
     public function show()
     {
         $count_admin = DB::table('users')->where('user_type_id',1)->count();
@@ -38,6 +37,7 @@ class KpiManagementController extends Controller
         $count_inspection = DB::table('user_inspects')->count();
         return view('kpi.kpiManagement',compact('count_admin','count_security','count_stuff','count_inspection'));
     }
+
     public function destroy($id)
     {
         $kpi = kpi::find($id);

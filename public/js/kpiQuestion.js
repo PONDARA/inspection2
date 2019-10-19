@@ -2,7 +2,7 @@
 $(document).ready(function(){
     var inputNumberOfQuestion = $("#inputNumberOfQuestion");
     var questionNumberField = $("#questionNumberField");
-    var questionData = $("#questionData");
+    var questionData = $("#questionDataContainer");
 
     var numOfQuestion = 0;
     var isQuestionFormCreated = false;
@@ -82,6 +82,8 @@ $(document).ready(function(){
             console.log(numOfQuestion);
             numOfQuestion--;
             if(numOfQuestion <= 0){
+                // reset when the number of question form is zero
+                questionData.children('form').remove();
                 isQuestionFormCreated = false;
                 numOfQuestion = 0;
                 toggleFromQuestionAndNumOfQuestion(false);

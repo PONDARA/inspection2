@@ -40,7 +40,7 @@
             </div>
         </div>
     </div>
-    <div id="questionData" style="display:none;padding-left:40px;padding-right:40px;margin-bottom:40px;margin-top:40px;">
+    <div id="questionDataContainer" style="display:none;padding-left:40px;padding-right:40px;margin-bottom:40px;margin-top:40px;">
         @csrf
     </div>
 @endsection
