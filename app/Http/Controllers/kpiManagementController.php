@@ -35,7 +35,19 @@ class KpiManagementController extends Controller
         $count_stuff = DB::table('users')->where('user_type_id',2)->count();
         $count_security = DB::table('users')->where('user_type_id',3)->count();
         $count_inspection = DB::table('user_inspects')->count();
-        return view('kpi.kpiManagement',compact('count_admin','count_security','count_stuff','count_inspection'));
+
+        $questions = Question::all();
+
+        $data = [
+            'count_admin' => $count_admin,
+            'count_stuff' => $count_stuff,
+            'count_security' => $count_security,
+            'count_inspection' => $count_inspection,
+            'questions' => $questions
+            
+        ];
+
+        return view('kpi.kpiManagement', $data);
     }
 
     public function destroy($id)
