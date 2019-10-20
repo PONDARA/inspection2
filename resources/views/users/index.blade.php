@@ -5,7 +5,7 @@
 @section('content')
     @include('layouts.headers.cards')
 
-    <div class="container-fluid mt-1">
+    <div class="container-fluid mt-5">
         <div class="row">
             <div class="col">
                 <div class="card shadow">

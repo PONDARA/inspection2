@@ -6,8 +6,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="/storage/logo.png" class="navbar-brand-img" alt="...">
-            <span>Inspection</span>
+            <img src="/storage/logo2.png" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
