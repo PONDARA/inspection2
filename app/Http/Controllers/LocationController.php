@@ -19,10 +19,16 @@ class LocationController extends Controller
         $locations = DB::table('locations')->paginate(10);
         // dd($locations);
         $users = User::where('user_type_id',3)->get();
-        foreach ($users as $user) {
+        if($users->count() > 0){
+            foreach ($users as $user) {
                 $data[] = $user->location_id;
             }
-        $availables = Location::select('location_id')->orderBy('location_id', 'desc')->whereNotIn('location_id', $data)->get();
+            $availables = Location::select('location_id')->orderBy('location_id', 'asc')->whereNotIn('location_id', $data)->get();
+            // dd($availables);
+        }
+            else{
+                $availables = $locations;
+            }
         return view('location',compact('count_admin','count_stuff','count_security','count_inspection','locations','availables'));
     }
     public function addMap(request $request)

@@ -106,6 +106,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if($stuffs->count() > 0)
                                 @foreach ($stuffs as $stuff)
                                     <tr>
                                         <td>{{ $stuff->name }}</td>
@@ -132,6 +133,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                @endif
                             </tbody>
                         </table>
                         <?php echo $stuffs->render(); ?>
@@ -152,7 +154,7 @@
                                     <tr>
                                         <td>{{ $security->name }}</td>
                                         <td>
-                                            <a href="mailto:{{ $stuff->email }}">{{ $security->email }}</a>
+                                            <a href="mailto:{{ $security->email }}">{{ $security->email }}</a>
                                         </td>
                                         <td>{{ $security->created_at->format('d/m/Y H:i') }}</td>
                                         <td class="text-right">
