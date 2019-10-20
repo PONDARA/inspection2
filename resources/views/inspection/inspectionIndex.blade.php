@@ -54,5 +54,4 @@
         </div>
         @endfor
     </div>
-    @include('layouts.footers.auth')
 @endsection

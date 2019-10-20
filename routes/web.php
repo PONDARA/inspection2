@@ -40,12 +40,15 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/user/createStuff', 'userController@createStuff')->name('user.createStuff');
 	Route::get('/user/createSecurity', 'userController@createSecurity')->name('user.createSecurity');
+	Route::get('/user/editSecutiy', 'userController@editSecurity')->name('user.editSecutiy');
+	Route::post('/user/editSecurityUpdate', 'userController@editSecurityUpdate')->name('user.editSecurityUpdate');
 
 	Route::post('/storeStuff', 'UserController@storeStuff')->name('user.storeStuff');
 	Route::post('/storeSecurity', 'UserController@storeSecurity')->name('user.storeSecurity');
 
 	Route::get('location', 'LocationController@showMap')->name('location');
 	Route::post('location/addMap', 'LocationController@addMap')->name('locationAddMap');
+	Route::post('location/delete', 'LocationController@destroyMap')->name('deleteLocation');
 
 });
 // Route::post('/inspectionStore', 'InspectionController@storee')->name('inspectionStore');

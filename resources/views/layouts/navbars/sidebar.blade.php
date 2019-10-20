@@ -6,8 +6,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="/storage/logo.png" class="navbar-brand-img" alt="...">
-            <span>Inspection</span>
+            <img src="/storage/logo2.png" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -80,39 +79,22 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">
+                    <a class="nav-link" href="{{ route('home') }}" style="color: #6c6ae4">
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#navbar-userManagement" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fas fa-user-cog" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #f4645f;">{{ __('User Management') }}</span>
+                    <a class="nav-link" href="{{ route('user.index') }}">
+                        <i class="fas fa-user-cog" ></i>
+                        {{ __('User Management') }}
                     </a>
-
-                    <div class="collapse off" id="navbar-userManagement">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile.edit') }}">
-                                    {{ __('User profile') }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.index') }}">
-                                    {{ __('User Management') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
-
                 <li class="nav-item">
-                    <!-- <a class="nav-link" href="#">
-                        <i class="ni ni-planet text-blue"></i> {{ __('KPI') }}
-                    </a> -->
                     <a class="nav-link active" href="#navbar-kpi" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                         <i class="ni ni-planet text-blue"></i>
-                        <span class="nav-link-text" style="color: #f4645f;">{{ __('KPI') }}</span>
+                        <span class="nav-link-text" style="color:#7f7f7f">
+                            {{ __('KPI') }}
+                        </span>
                     </a>
 
                     <div class="collapse off" id="navbar-kpi">
@@ -123,7 +105,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('kpiManagement')}}">
+                                <a class="nav-link" href="{{route('kpiManagement')}}" style="color: gray">
                                     {{ __('KPI Management') }}
                                 </a>
                             </li>
@@ -136,45 +118,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('location') }}">
-                        <i class="fas fa-compass text-green"></i> {{ __('Location') }}
-                    </a>
-                </li>
-               <!--  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-key-25 text-info"></i> {{ __('Login') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-circle-08 text-pink"></i> {{ __('Register') }}
-                    </a>
-                </li>
-                <li class="nav-item mb-5" style="position: absolute; bottom: 0;">
-                    <a class="nav-link" href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank">
-                        <i class="ni ni-cloud-download-95"></i> Upgrade to PRO
-                    </a>
-                </li> -->
-            </ul>
-            <!-- Divider -->
-            <hr class="my-3">
-            <!-- Heading -->
-            <h6 class="navbar-heading text-muted">Documentation</h6>
-            <!-- Navigation -->
-            <ul class="navbar-nav mb-md-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
-                        <i class="ni ni-spaceship"></i> Getting started
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
-                        <i class="ni ni-palette"></i> Foundation
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html">
-                        <i class="ni ni-ui-04"></i> Components
+                    <a class="nav-link text-success" href="{{ route('location') }}">
+                        <i class="fas fa-compass text-success"></i> {{ __('Location') }}
                     </a>
                 </li>
             </ul>

@@ -18,8 +18,7 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                <span class="text-nowrap">Since last month</span>
+                                <span class="text-nowrap">Total Amount of admin</span>
                             </p>
                         </div>
                     </div>
@@ -58,8 +57,7 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                <span class="text-nowrap">Since last month</span>
+                                <span class="text-nowrap">Total Amount of Stuff</span>
                             </p>
                         </div>
                     </div>
@@ -98,8 +96,7 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                <span class="text-nowrap">Since last month</span>
+                                <span class="text-nowrap">Total Amount of Security</span>
                             </p>
                         </div>
                     </div>
@@ -138,8 +135,7 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                <span class="text-nowrap">Since last month</span>
+                                <span class="text-nowrap">Amount of inspection today</span>
                             </p>
                         </div>
                     </div>

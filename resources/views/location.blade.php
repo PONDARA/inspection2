@@ -30,10 +30,14 @@
                 <form role="form" method="POST" action="{{route('locationAddMap')}}">
                     @csrf
                     <div class="form-group">
-                        <label for="map-search">Address</label>
-                        <input id="map-search" class="controls" type="text" placeholder="Search Box" size="104">
+                        <label for="map-search">Search Address </label>
+                        <input id="map-search" class="controls" type="text" placeholder="Search Box" size="104" name="location_name" required autofocus>
                     </div>
                     <div class="form-group row">
+                        <div class="col-4">
+                            <label for="city">Place</label>
+                        <input type="text" class="reg-input-city" id="city" name="location_name" required autofocus>
+                        </div>
                         <div class="col-4">
                             <label for="lat">lat</label>
                         <input type="text" class="latitude" id="lat" name="latitude">
@@ -42,17 +46,14 @@
                             <label for="long">long</label>
                         <input type="text" class="longtitude" id="long" name="longtitude">
                         </div>
-                        <div class="col-4">
-                            <label for="city">Place</label>
-                        <input type="text" class="reg-input-city" placeholder="place" id="city" name="location_name">
-                        </div>
                     </div>
                     <div class="row text-center">
                         <div div class="col-lg-0 col-sm-4">
                             
                         </div>
                         <div class="col-lg-12 col-sm-4">
-                            <button type="submit" class="btn btn-primary">Add location</button>
+                            <button type="submit" class="btn btn-primary mb-3">
+                            Save this location</button>
                         </div>
                         <div class="col-lg-0 col-sm-4">
                             
@@ -68,13 +69,63 @@
             <div div class="col-lg-0 col-sm-4">
                 
             </div>
-            <div class="col-lg-12 col-sm-4" id="mapStore">
+            <div class="col-lg-12 col-sm-4 mb-5" id="mapStore">
                 <div id="map-canvas" ></div>
             </div>
             <div class="col-lg-0 col-sm-4">
                 
             </div>
         </div>
+    </div>
+    <div class="table-responsive" id="adminTable">
+            <table class="table align-items-center table-flush">
+                 <thead class="thead-light">
+                        <tr>
+                            <th scope="col">{{ __('Location') }}</th>
+                            <th scope="col">{{ __('Lattitud') }}</th>
+                            <th scope="col">{{ __('Longtitude') }}</th>
+                            <th scope="col"></th>
+                        </tr>
+                </thead>
+                <tbody>
+                    @foreach ($locations as $location)
+                        <tr>
+                            <td>
+                                {{ $location->location_name }}
+                            </td>
+                            <td>
+                                {{$location->longtitude}}
+                            </td>
+                            <td> 
+                                {{$location->latitude}}
+                            </td>
+                            <td class="text-right">
+                                <div class="dropdown">
+                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <form action="{{ (route('deleteLocation',['location_id'=>$location->location_id]))}}" method="post">
+                                        @csrf
+                                            <a class="dropdown-item" href="#">
+                                                {{ __('Edit') }}
+                                            </a>
+                                            @foreach($availables as $available)
+                                            @if($location->location_id == $available->location_id )
+                                            <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
+                                                {{ __('Delete') }}
+                                            </button>
+                                            @endif
+                                            @endforeach
+                                        </form>
+                                        </div>
+                                    </div>     
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        <?php echo $locations->render(); ?>
     </div>
 @endsection
 

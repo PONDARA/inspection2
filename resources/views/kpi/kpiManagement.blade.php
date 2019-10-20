@@ -128,12 +128,12 @@
             </table>
         </div>
     </div>
-   
+ <!--   
      <div class="container-fluid" style="margin-top: 10px">
         <div class="row text-center">
            <div class="col-12">
                 @include('layouts.footers.auth')
            </div>
         </div>
-    </div>
+    </div> -->
 @endsection

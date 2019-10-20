@@ -21,16 +21,16 @@
                         </div>
                     </div>
                     <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-                        <div class="d-flex justify-content-between">
+                       <!--  <div class="d-flex justify-content-between">
                             <a href="#" class="btn btn-sm btn-info mr-4">{{ __('Connect') }}</a>
                             <a href="#" class="btn btn-sm btn-default float-right">{{ __('Message') }}</a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="card-body pt-0 pt-md-4">
                         <div class="row">
                             <div class="col">
                                 <div class="card-profile-stats d-flex justify-content-center mt-md-5">
-                                    <div>
+                                    <!-- <div>
                                         <span class="heading">22</span>
                                         <span class="description">{{ __('Friends') }}</span>
                                     </div>
@@ -41,15 +41,21 @@
                                     <div>
                                         <span class="heading">89</span>
                                         <span class="description">{{ __('Comments') }}</span>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                         <div class="text-center">
                             <h3>
-                                {{ auth()->user()->name }}<span class="font-weight-light">, 27</span>
+                                {{ auth()->user()->name }}<span class="font-weight-light"></span>
                             </h3>
-                            <div class="h5 font-weight-300">
+                            <h3>
+                                {{ auth()->user()->email }}<span class="font-weight-light"></span>
+                            </h3>
+                            <h3>
+                                {{ auth()->user()->gender }}<span class="font-weight-light"></span>
+                            </h3>
+                            <!-- <div class="h5 font-weight-300">
                                 <i class="ni location_pin mr-2"></i>{{ __('Bucharest, Romania') }}
                             </div>
                             <div class="h5 mt-4">
@@ -60,7 +66,7 @@
                             </div>
                             <hr class="my-4" />
                             <p>{{ __('Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.') }}</p>
-                            <a href="#">{{ __('Show more') }}</a>
+                            <a href="#">{{ __('Show more') }}</a> -->
                         </div>
                     </div>
                 </div>
@@ -166,7 +172,5 @@
                 </div>
             </div>
         </div>
-        
-        @include('layouts.footers.auth')
     </div>
 @endsection

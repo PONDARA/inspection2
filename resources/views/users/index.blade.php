@@ -5,7 +5,7 @@
 @section('content')
     @include('layouts.headers.cards')
 
-    <div class="container-fluid mt-1">
+    <div class="container-fluid mt-5">
         <div class="row">
             <div class="col">
                 <div class="card shadow">
@@ -106,6 +106,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if($stuffs->count() > 0)
                                 @foreach ($stuffs as $stuff)
                                     <tr>
                                         <td>{{ $stuff->name }}</td>
@@ -132,6 +133,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                @endif
                             </tbody>
                         </table>
                         <?php echo $stuffs->render(); ?>
@@ -152,7 +154,7 @@
                                     <tr>
                                         <td>{{ $security->name }}</td>
                                         <td>
-                                            <a href="mailto:{{ $stuff->email }}">{{ $security->email }}</a>
+                                            <a href="mailto:{{ $security->email }}">{{ $security->email }}</a>
                                         </td>
                                         <td>{{ $security->created_at->format('d/m/Y H:i') }}</td>
                                         <td class="text-right">
@@ -165,7 +167,7 @@
                                                         @csrf
                                                         @method('delete')
                                                         <a class="dropdown-item" href="{{(route('securityView',['security_id'=>$security->id]))}}">{{ __('View') }}</a>
-                                                        <a class="dropdown-item" href="{{ route('user.edit', $security) }}">{{ __('Edit') }}</a>
+                                                        <a class="dropdown-item" href="{{(route('user.editSecutiy',['securityId'=>$security->id]))}}">{{ __('Edit') }}</a>
                                                         <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
                                                                 {{ __('Delete') }}
                                                         </button>
@@ -187,7 +189,5 @@
                 </div>
             </div>
         </div>
-            
-        @include('layouts.footers.auth')
     </div>
 @endsection

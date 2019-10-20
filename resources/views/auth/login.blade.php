@@ -7,16 +7,20 @@
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
                 <div class="card bg-secondary shadow border-0">
+                    <div class="container">
+                        <div class="header-body text-center mb-1">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-12">
+                                    <h2 class="text-black">{{ __('Welcome to Inspection Dashboard') }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-header bg-transparent pb-1 text-muted text-center mt-2 mb-3">
                        <img src="storage/logo.png" style="width: 120px; height: 120px; ">
-                        <div class="text-muted text-center mt-2 mb-3"><span>{{ __('Inspection') }}</span></div>
+                        <div class="text-muted text-center mt-2 mb-3"><span>{{ __('KVS') }}</span></div>
                     </div>
                     <div class="card-body px-lg-5 py-lg-1">
-                        <div class="text-center text-muted mb-4">
-                            <small>
-                                <a href="{{ route('register') }}">{{ __('Create new account') }}</a> {{ __('OR Sign in with these credentials:') }}
-                            </small>
-                        </div>
                         <form role="form" method="POST" action="{{ route('login') }}">
                             @csrf
 
@@ -59,17 +63,15 @@
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-6">
+                    <div class="col-3">
+                        
+                    </div>
+                    <div class="col-6 text-center">
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}" class="text-light">
                                 <small>{{ __('Forgot password?') }}</small>
                             </a>
                         @endif
-                    </div>
-                    <div class="col-6 text-right">
-                        <a href="{{ route('register') }}" class="text-light">
-                            <small>{{ __('Create new account') }}</small>
-                        </a>
                     </div>
                 </div>
             </div>
