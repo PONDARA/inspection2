@@ -1,0 +1,85 @@
+
+
+.right-align{
+    text-align: end;
+}
+
+div label{
+    font-size: 14px;
+}
+
+#table-row p{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.date-title{
+    margin-top: 20px;
+}
+
+.date-title > div > label:first-child{
+    font-weight: bold;
+}
+
+.container-fluid:last-child{
+    padding:0;
+}
+
+.middle-row {
+    background: red;
+    height: 10px;
+}
+
+.data-container-row{
+    box-shadow: 2px 12px 8px -8px rgba(0,0,0,.25);
+}
+
+table > thead{
+    background: #5F71E4;
+    height: 58px;
+    border-radius: 3px;
+
+}
+
+.table thead tr th {
+    color: white;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.table th, .table td{
+    text-align: center;
+}
+
+.main-table-container > tbody > tr > td{
+    padding : 0;
+}
+
+.status {
+    color: red;
+}
+
+.status-blue{
+    color: #5F71E4;
+}
+
+
+
+
+#right-container{
+    padding: 0px !important;
+}
+
+#table-row{
+    margin-top: 30px;
+}
+
+.question-table {
+    table-layout: fixed;
+}
+
+.question-table td{
+    word-wrap: break-word;
+    white-space: normal;
+}
+

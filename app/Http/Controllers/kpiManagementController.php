@@ -29,14 +29,28 @@ class KpiManagementController extends Controller
         }
     }
 
+    public function getKpiDetail($id){
+        $count_admin = DB::table('users')->where('user_type_id',1)->count();
+        $count_stuff = DB::table('users')->where('user_type_id',2)->count();
+        $count_security = DB::table('users')->where('user_type_id',3)->count();
+        $count_inspection = DB::table('user_inspects')->count();
+
+        $data = [
+            'count_admin' => $count_admin,
+            'count_stuff' => $count_stuff,
+            'count_security' => $count_security,
+            'count_inspection' => $count_inspection,
+            
+        ];
+        return view('kpi.kpiDetail', $data);
+    }
+
     public function show()
     {
         $count_admin = DB::table('users')->where('user_type_id',1)->count();
         $count_stuff = DB::table('users')->where('user_type_id',2)->count();
         $count_security = DB::table('users')->where('user_type_id',3)->count();
         $count_inspection = DB::table('user_inspects')->count();
-
-        $questions = Question::all();
 
         $data = [
             'count_admin' => $count_admin,
