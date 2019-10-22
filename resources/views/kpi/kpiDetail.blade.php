@@ -62,7 +62,7 @@
                         </div>
                         <div class="col-md-4 right-align">
                             
-                            <button class="btn btn-success" type="button">add question</button>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" type="button">add question</button>
                         </div>
                     </div>
                     <div class="row">
@@ -101,6 +101,38 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New question</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="question-input" class="col-form-label">Question</label>
+                  <input type="text" class="form-control" id="question-input">
+                </div>
+                <div class="form-group">
+                  <label for="objective-text" class="col-form-label">Objective</label>
+                  <textarea class="form-control" id="objective-text"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="num-of-question-input" class="col-form-label"># of Question</label>
+                    <input type="number" class="form-control" id="num-of-question-input"/>
+                  </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Create</button>
+            </div>
+          </div>
+        </div>
+      </div>
    
      <div class="container-fluid" style="margin-top: 10px">
         <div class="row text-center">
@@ -109,4 +141,8 @@
            </div>
         </div>
     </div>
+@endsection
+@section('js')
+<script src="{{ asset('js/kpiDetail.js') }}"></script>
+
 @endsection

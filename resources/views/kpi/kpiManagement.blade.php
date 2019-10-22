@@ -54,9 +54,11 @@
     <div class="container-fluid" style="margin-top: 10px">
         <div id="create-kpi-container" class="row justify-content-end">
             <div class="col" style="text-align:end;">
-                <button class="btn btn-success" type="button">
-                    Create KPI
-                </button>
+                <a href="{{ route('kpi_creation_form') }}">
+                    <button class="btn btn-success" type="button">
+                        Create KPI  
+                    </button>
+                </a>
             </div>
         </div>
         <div class="row">

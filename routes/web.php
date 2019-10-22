@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/securityView', 'InspectionController@securityView')->name('securityView');
 
 	Route::get('/kpiManagement', 'KpiManagementController@show')->name('kpiManagement');
+	Route::get('/kpi/kpi-creation-form', 'KpiManagementController@getKpiCreationForm')->name('kpi_creation_form');
 	Route::get('kpi/question/form', 'KpiManagementController@getQuestionForm')->name('kpi_create_question');
 	Route::post('kpi/question/handleform', 'KpiManagementController@handleQuestionForm')->name('kpi_create_question_handler');// deprecated
 	Route::get('kpi/detail/{id}','KpiManagementController@getKpiDetail')->name('kpi_detail');
@@ -49,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('location', 'LocationController@showMap')->name('location');
 	Route::post('location/addMap', 'LocationController@addMap')->name('locationAddMap');
 	Route::post('location/delete', 'LocationController@destroyMap')->name('deleteLocation');
+
 
 });
 // Route::post('/inspectionStore', 'InspectionController@storee')->name('inspectionStore');
