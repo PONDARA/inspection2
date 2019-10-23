@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('kpi/question/form', 'KpiManagementController@getQuestionForm')->name('kpi_create_question');
 	Route::post('kpi/question/handleform', 'KpiManagementController@handleQuestionForm')->name('kpi_create_question_handler');// deprecated
 	Route::get('kpi/detail/{id}','KpiManagementController@getKpiDetail')->name('kpi_detail');
+	Route::post('/questionStore', 'KpiManagementController@questionStore')->name('questionStore');
 
 	Route::get('/user/createStuff', 'userController@createStuff')->name('user.createStuff');
 	Route::get('/user/createSecurity', 'userController@createSecurity')->name('user.createSecurity');
@@ -48,6 +49,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/storeSecurity', 'UserController@storeSecurity')->name('user.storeSecurity');
 
 	Route::get('location', 'LocationController@showMap')->name('location');
+	Route::get('editLocation', 'LocationController@editLocation')->name('editLocation');
+	Route::post('editLocationStore', 'LocationController@editLocationStore')->name('editLocationStore');
 	Route::post('location/addMap', 'LocationController@addMap')->name('locationAddMap');
 	Route::post('location/delete', 'LocationController@destroyMap')->name('deleteLocation');
 

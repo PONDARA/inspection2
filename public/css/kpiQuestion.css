@@ -1,0 +1,20 @@
+<style>
+        .questionInput{
+            display: inline-block;
+            margin-top: 10px;
+            width: 94%;
+        }
+
+        .labelRemoveQuestion{
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 13px;
+            color: red;
+            cursor: pointer;
+
+        }
+
+        .labelRemoveQuestion:hover{
+            text-decoration: underline;
+        }
+    </style>

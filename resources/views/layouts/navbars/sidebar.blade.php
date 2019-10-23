@@ -101,7 +101,7 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('kpi_create_question') }}">
-                                    {{ __('KPI question') }}
+                                    {{ __('KPI Qusetion') }}
                                 </a>
                             </li>
                             <li class="nav-item">
