@@ -3,7 +3,10 @@
     <script type="text/javascript" src="{{asset('js/kpiManagement.js')}}"></script>
 @endsection
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/kpiCreationForm.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/kpiCreationForm.css') }}">
+    {{-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"> --}}
+
 @endsection
 @section('content')
     @include('layouts.headers.cards')
@@ -26,34 +29,76 @@
 				</nav>
 				<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
 					<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">Question</th>
-                                <th scope="col">Objective</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="data-container-row">
-                                    <td>Mark</td>
-                                    <td>Mark</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr class="middle-row"></tr>
-                                <tr class="data-container-row">
-                                    <td>Mark</td>
-                                    <td>Jacob</td>
-                                    <td>@fat</td>
-                                    </td>
-                                </tr>
-                                <tr class="middle-row"></tr>
-                                <tr class="data-container-row">
-                                    <td>Mark</td>
-                                    <td>Larry</td>
-                                    <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                            <table class="table table-bordered table-striped mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Question</th>
+                                        <th scope="col">Objective</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>asdijfjfoia jdoisfjisand fnsdifn ianslifnlisadn filns fnasud nfiunsad fnuals</td>
+                                        <td>asdijfjfoia jdoisfjisand fnsdifn ianslifnlisadn filns fnasud nfiunsad fnuals</td>
+                                        <td>    
+                                            <section class="model-2">
+                                                <div class="checkbox">
+                                                    <input type="checkbox"/>
+                                                    <label></label>
+                                                </div>
+                                            </section>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Jacob</td>
+                                        <td>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" checked data-toggle="toggle">
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Larry</td>
+                                        <td>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" checked data-toggle="toggle">
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Mark</td>
+                                        <td>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" checked data-toggle="toggle">
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Jacob</td>
+                                        <td>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" checked data-toggle="toggle"> First
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Larry</td>
+                                        <td>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" checked data-toggle="toggle"> First
+                                            </label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 					</div>
 					<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 						<table class="table">
@@ -268,5 +313,5 @@
     </div>
 @endsection
 @section('js')
-
+{{-- <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> --}}
 @endsection

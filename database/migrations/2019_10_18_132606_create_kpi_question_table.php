@@ -16,6 +16,7 @@ class CreateKpiQuestionTable extends Migration
         Schema::create('kpi_question', function (Blueprint $table) {
             $table->unsignedInteger('kpi_id');
             $table->unsignedInteger('question_id');
+            $table->integer('max_score');
 
             $table->foreign('kpi_id')->references('id')->on('questions');
             $table->foreign('question_id')->references('id')->on('kpis');
