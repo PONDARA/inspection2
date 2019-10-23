@@ -14,9 +14,5 @@ class QuestionCategorySeeder extends Seeder
         DB::table('question_categories')->insert([
             'name' => 'Attitute'
         ]);
-
-        DB::table('question_categories')->insert([
-            'name' => 'Responsibility'
-        ]);
     }
 }

@@ -17,7 +17,6 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->string('question');
             $table->string('objective');
-            $table->integer('max_score');
 
             $table->unsignedInteger('question_cate_id');
         });
