@@ -31,7 +31,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="map-search">Search Address </label>
-                        <input id="map-search" class="controls" type="text" placeholder="Search Box" size="104" name="location_name" required autofocus>
+                        <input id="map-search" class="controls" type="text" placeholder="Search Box" size="104" name="location_search" required autofocus>
                     </div>
                     <div class="form-group row">
                         <div class="col-4">
@@ -107,7 +107,7 @@
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                         <form action="{{ (route('deleteLocation',['location_id'=>$location->location_id]))}}" method="post">
                                         @csrf
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="{{ (route('editLocation',['location_id'=>$location->location_id]))}}">
                                                 {{ __('Edit') }}
                                             </a>
                                             @foreach($availables as $available)

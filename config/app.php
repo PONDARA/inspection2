@@ -176,7 +176,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         // image invention
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+        //laravel passport
+        Laravel\Passport\PassportServiceProvider::class,
 
     ],
 
