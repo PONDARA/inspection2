@@ -34,21 +34,7 @@ class KpiManagementController extends Controller
         ]);
         $question->question_cate_id=$request->get('question_cat_id');
         $question->save();
-
-        $count_admin = DB::table('users')->where('user_type_id',1)->count();
-        $count_stuff = DB::table('users')->where('user_type_id',2)->count();
-        $count_security = DB::table('users')->where('user_type_id',3)->count();
-        $count_inspection = DB::table('user_inspects')->count();
-        $question_categories = Question_categorie::all();
-        $data = [
-            'count_admin' => $count_admin,
-            'count_stuff' => $count_stuff,
-            'count_security' => $count_security,
-            'count_inspection' => $count_inspection,
-            'question_categories' => $question_categories
-            
-        ];
-        return view('kpi.kpiQuestion', $data)->withStatus(__('Question successfully created.'));
+        return back()->withStatus(__('Question successfully created.'));
     }
 
 
