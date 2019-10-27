@@ -1,3 +1,19 @@
+
+/* my code */
+.main-container{
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+#cate-title{
+  flex-wrap: unset;
+  overflow: auto;
+}
+
+
+
+/* library */
+
 .my-custom-scrollbar {
     position: relative;
     height: 400px;

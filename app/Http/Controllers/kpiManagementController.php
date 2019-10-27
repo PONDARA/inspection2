@@ -20,6 +20,9 @@ class KpiManagementController extends Controller
         $question_categories = Question_categorie::all();
         return view('kpi.kpiQuestion', compact('count_admin','count_security','count_stuff','count_inspection','question_categories'));
     }
+
+
+
     public function questionStore(Request $request){
          $request->validate([
         'question'=>'required',
@@ -48,6 +51,8 @@ class KpiManagementController extends Controller
         return view('kpi.kpiQuestion', $data)->withStatus(__('Question successfully created.'));
     }
 
+
+
     public function handleQuestionForm(Request $request){
         foreach($request->questions as $q){
             Question::create([
@@ -55,6 +60,9 @@ class KpiManagementController extends Controller
             ]);
         }
     }
+
+
+
 
     public function getKpiDetail($id){
         $count_admin = DB::table('users')->where('user_type_id',1)->count();
@@ -72,21 +80,37 @@ class KpiManagementController extends Controller
         return view('kpi.kpiDetail', $data);
     }
 
+
+
     public function getKpiCreationForm(){
         $count_admin = DB::table('users')->where('user_type_id',1)->count();
         $count_stuff = DB::table('users')->where('user_type_id',2)->count();
         $count_security = DB::table('users')->where('user_type_id',3)->count();
         $count_inspection = DB::table('user_inspects')->count();
 
+        $questionWithCategory = [];
+
+        $questionCategories = Question_categorie::all();
+        foreach($questionCategories as $cat){
+            $questions = Question::where("question_cate_id", $cat->id)->get();
+            $questions["cate_title"] = $cat->name;
+            $questionWithCategory[$cat->name] = $questions;
+        }
+
+        // dd($questionWithCategory);
+
         $data = [
             'count_admin' => $count_admin,
             'count_stuff' => $count_stuff,
             'count_security' => $count_security,
             'count_inspection' => $count_inspection,
-            
+            'questionsWithCate' =>$questionWithCategory
         ];
+
         return view('kpi.kpiCreationForm', $data);
     }
+
+
 
     public function show()
     {
@@ -106,6 +130,8 @@ class KpiManagementController extends Controller
 
         return view('kpi.kpiManagement', $data);
     }
+
+
 
     public function destroy($id)
     {
