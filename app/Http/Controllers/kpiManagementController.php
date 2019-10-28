@@ -18,8 +18,25 @@ class KpiManagementController extends Controller
         $count_stuff = DB::table('users')->where('user_type_id',2)->count();
         $count_security = DB::table('users')->where('user_type_id',3)->count();
         $count_inspection = $guards = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->where(DB::raw('substr(user_inspects.created_at,1,10)'),'=',date("Y-m-d"))->select('user_inspects.*','users.name')->count();
-        $question_categories = Question_categorie::all();
-        return view('kpi.kpiQuestion', compact('count_admin','count_security','count_stuff','count_inspection','question_categories'));
+        $questionWithCategory = [];
+
+        $questionCategories = Question_categorie::all();
+        foreach($questionCategories as $cat){
+            $questions = Question::where("question_cate_id", $cat->id)->get();
+            $questions["cate_title"] = $cat->name;
+            $questionWithCategory[$cat->name] = $questions;
+        }
+
+        // dd($questionWithCategory);
+
+        $data = [
+            'count_admin' => $count_admin,
+            'count_stuff' => $count_stuff,
+            'count_security' => $count_security,
+            'count_inspection' => $count_inspection,
+            'questionsWithCate' =>$questionWithCategory
+        ];
+        return view('kpi.kpiQuestion', $data,compact('count_admin','count_security','count_stuff','count_inspection','questionCategories'));
     }
 
 

@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Validator;
+use App\Models\Gallery;
+use App\Models\Vendors;
+use Auth;
+use App\User;
+use Illuminate\Support\Facades\Input;
+use Hash;
 
 class MobileController extends Controller
 {
-    public function login(User $model)
+    public function login(Request $request)
     {
        if (auth()->attempt(['email' => $request->email, 'password' => $request->password])){ 
             $user = Auth::user();

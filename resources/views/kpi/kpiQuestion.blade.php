@@ -51,7 +51,7 @@
                                         <label class="form-control-label" for="location">{{ __('Question Category') }}</label>
                                         <div class="input-group input-group-alternative mb-3">
                                             <select class="form-control" name="question_cat_id" id="question_cat">
-                                            @foreach($question_categories as $question_category)
+                                            @foreach($questionCategories as $question_category)
                                                 <option value="{{$question_category->id}}">{{$question_category->name}}</option>
                                              @endforeach   
                                             </select>
@@ -67,10 +67,51 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="kpi" role="tabpanel" aria-labelledby="profile-tab">
-            
-            </div>
-        </div>
-    </div>
+                <div class="container-fluid main-container">
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <nav>
+                                <div id="cate-title" class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                    {{-- <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a> --}}
+                                @foreach ($questionsWithCate as $item)
+                                    <a class="nav-item nav-link @if($loop->index == 0)<?php echo 'active' ?> @endif" id="nav-{{ $item['cate_title'] }}-tab" data-toggle="tab" href="#nav-{{ $item['cate_title'] }}" role="tab" aria-controls="nav-home" aria-selected="true">{{ $item['cate_title'] }}</a>
+                                @endforeach
+                                </div>
+                            </nav>
+                            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                                @foreach ($questionsWithCate as $item)
+                                    <div class="tab-pane fade @if($loop->index == 0)<?php echo 'active show' ?> @endif" id="nav-{{ $item['cate_title'] }}" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                            <table class="table table-bordered table-striped mb-0 all-question-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Question</th>
+                                                        <th scope="col">Objective</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($item as $question)
+                                                        @if (count($item) <= $loop->index+1)
+                                                            @break
+                                                        @endif
+                                                        <tr>
+                                                            <td>{{ $question->question }}</td>
+                                                            <td>{{ $question->objective }}</td>
+                                                        </tr>
+                                                    @endforeach
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
 @endsection
 
 @push('js')
