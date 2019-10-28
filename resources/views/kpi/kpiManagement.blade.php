@@ -5,8 +5,8 @@
 @section('css')
 <style>
     #create-kpi-container{
-        margin-bottom: 25px;
-        margin-top: 40px;
+        margin-bottom: 13px;
+        margin-top: 23px;
     }
 
     .middle-row {
@@ -52,6 +52,14 @@
 @section('content')
     @include('layouts.headers.cards')
     <div class="container-fluid" style="margin-top: 10px">
+        <div class="row">
+            <div class="col">
+                @if(\Session::has('error'))
+                    <div class="alert alert-danger mb-0" role="alert">{!! \Session::get('error')[0] !!}</div>
+                @endif 
+            </div>
+        </div>
+
         <div id="create-kpi-container" class="row justify-content-end">
             <div class="col" style="text-align:end;">
                 <a href="{{ route('kpi_creation_form') }}">
@@ -73,69 +81,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="data-container-row">
-                    <td>Mark</td>
-                    <td>Mark</td>
-                    <td class="status">disable</td>
-                    <td>@mdo</td>
-                    <td> 
-                        <div class="dropdown">
-                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                <a class="dropdown-item" href="#">View</a>
-                                <a class="dropdown-item" href="#">Activate</a>
-                            </div>
-                        </div>
-                    </td>
-                    </tr>
-                    <tr class="middle-row"></tr>
-                    <tr class="data-container-row">
-                    <td>Mark</td>
-                    <td>Jacob</td>
-                    <td class="status-blue">active</td>
-                    <td>@fat</td>
-                    <td> 
-                        <div class="dropdown">
-                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                <a class="dropdown-item" href="#">View</a>
-                                <a class="dropdown-item" href="#">Deactivate</a>
-                            </div>
-                        </div>
-                    </td>
-                    </tr>
-                    <tr class="middle-row"></tr>
-                    <tr class="data-container-row">
-                    <td>Mark</td>
-                    <td>Larry</td>
-                    <td class="status">disable</td>
-                    <td>@twitter</td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                <a class="dropdown-item" href="#">View</a>
-                                <a class="dropdown-item" href="#">Activate</a>
-                            </div>
-                        </div>
-                    </td>
-                    </tr>
+                    @foreach ($kpis as $kpi)
+                        <tr class="data-container-row">
+                            <td>{{ $kpi->title }}</td>
+                            <td>{{ $kpi->date }}</td>
+                            <td kpi-id="{{ $kpi->id }}" class="kpi-status @if ($kpi->publish == 1) <?php echo 'status-blue' ?>  @else <?php echo 'status' ?> @endif">
+                                @if ($kpi->publish == 1) <?php echo 'active' ?> 
+                                @else <?php echo 'inactive' ?>
+                                @endif
+                            </td>
+                            <td>{{ $kpi->length }}</td>
+                            <td> 
+                                <div class="dropdown">
+                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <a class="dropdown-item" href="#">View</a>
+                                        @if ($kpi->publish == 1) <a  class="dropdown-item deactivate-btn" href="">Deactivate</a>
+                                        @endif
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                    @csrf
+                    {{-- status-blue --}}
                 </tbody>
             </table>
         </div>
     </div>
- <!--   
-     <div class="container-fluid" style="margin-top: 10px">
-        <div class="row text-center">
-           <div class="col-12">
-                @include('layouts.footers.auth')
-           </div>
-        </div>
-    </div> -->
+
+    @include('layouts.footers.auth')
+
 @endsection
