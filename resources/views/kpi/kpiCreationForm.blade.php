@@ -13,6 +13,13 @@
     @include('layouts.headers.cards')
     <div class="container-fluid main-container">
         <div class="row">
+            <div class="col">
+                <div id="error-message" class="alert alert-danger" style="display:none"  role="alert">
+                    <ul style="margin-bottom:0"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-3">
                 <input class="form-control" type="text" name="title" id="title-input" placeholder="Title">
             </div>
@@ -30,148 +37,6 @@
                     </div>
 				</nav>
 				<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-					{{-- <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                            <table class="table table-bordered table-striped mb-0 all-question-table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Question</th>
-                                        <th scope="col">Objective</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>asdijfjfoia jdoisfjisand fnsdifn ianslifnlisadn filns fnasud nfiunsad fnuals</td>
-                                        <td>asdijfjfoia jdoisfjisand fnsdifn ianslifnlisadn filns fnasud nfiunsad fnuals</td>
-                                        <td class="activate-btn"> 
-                                            
-                                            <button type="button" class="btn btn-sm btn-toggle focus" data-toggle="button" aria-pressed="true" autocomplete="off">
-                                                <div class="handle"></div>
-                                            </button>
-                                        
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Jacob</td>
-                                        <td class="activate-btn"> 
-                                            <button type="button" class="btn btn-sm btn-toggle focus" data-toggle="button" aria-pressed="true" autocomplete="off">
-                                                <div class="handle"></div>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td class="activate-btn"> 
-                                            <button type="button" class="btn btn-sm btn-toggle focus" data-toggle="button" aria-pressed="true" autocomplete="off">
-                                                <div class="handle"></div>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Mark</td>
-                                        <td class="activate-btn"> 
-                                            <button type="button" class="btn btn-sm btn-toggle focus" data-toggle="button" aria-pressed="true" autocomplete="off">
-                                                <div class="handle"></div>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Jacob</td>
-                                        <td class="activate-btn"> 
-                                            <button type="button" class="btn btn-sm btn-toggle focus" data-toggle="button" aria-pressed="fa" autocomplete="off">
-                                                <div class="handle"></div>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Larry</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-toggle focus" data-toggle="button" aria-pressed="true" autocomplete="off">
-                                                <div class="handle"></div>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-					</div>
-					<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                            <table class="table table-bordered table-striped mb-0 all-question-table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Question</th>
-                                        <th scope="col">Objective</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>asdijfjfoia jdoisfjisand fnsdifn ianslifnlisadn filns fnasud nfiunsad fnuals</td>
-                                        <td>asdijfjfoia jdoisfjisand fnsdifn ianslifnlisadn filns fnasud nfiunsad fnuals</td>
-                                        <td class="activate-btn"> 
-                                            
-                                            <button type="button" class="btn btn-sm btn-toggle focus" data-toggle="button" aria-pressed="true" autocomplete="off">
-                                                <div class="handle"></div>
-                                            </button>
-                                        
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Jacob</td>
-                                        <td class="activate-btn"> 
-                                            <button type="button" class="btn btn-sm btn-toggle focus" data-toggle="button" aria-pressed="true" autocomplete="off">
-                                                <div class="handle"></div>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td class="activate-btn"> 
-                                            <button type="button" class="btn btn-sm btn-toggle focus" data-toggle="button" aria-pressed="true" autocomplete="off">
-                                                <div class="handle"></div>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Mark</td>
-                                        <td class="activate-btn"> 
-                                            <button type="button" class="btn btn-sm btn-toggle focus" data-toggle="button" aria-pressed="true" autocomplete="off">
-                                                <div class="handle"></div>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Jacob</td>
-                                        <td class="activate-btn"> 
-                                            <button type="button" class="btn btn-sm btn-toggle focus" data-toggle="button" aria-pressed="fa" autocomplete="off">
-                                                <div class="handle"></div>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Larry</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-toggle focus" data-toggle="button" aria-pressed="true" autocomplete="off">
-                                                <div class="handle"></div>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div> --}}
                     @foreach ($questionsWithCate as $item)
                         <div class="tab-pane fade @if($loop->index == 0)<?php echo 'active show' ?> @endif" id="nav-{{ $item['cate_title'] }}" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -192,7 +57,7 @@
                                                 <td>{{ $question->question }}</td>
                                                 <td>{{ $question->objective }}</td>
                                                 <td class="activate-btn"> 
-                                                    <button type="button" q-id="q-{{ $question->id }}" class="my-activate-btn btn btn-sm btn-toggle focus" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                                    <button type="button" q-id="{{ $question->id }}-q" class="my-activate-btn btn btn-sm btn-toggle focus" data-toggle="button" aria-pressed="false" autocomplete="off">
                                                         <div class="handle"></div>
                                                     </button>
                                                 </td>
@@ -219,11 +84,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                {{-- <td>asdijfjfoia jdoisfjisand fnsdifn ianslifnlisadn filns fnasud nfiunsad fnuals</td>
-                                <td>9</td>
-                                <td class="remove-q-btn">remove</td> --}}
-                            </tr>
+
+                            {{-- place for each row of selected question --}}
                         </tbody>
                     </table>
                 </div>
@@ -231,11 +93,11 @@
         </div>
         <div class="row justify-content-md-center">
             <div class="col-3 justify-content-center" style="text-align:center;">
-                <button type="button" class="btn btn-primary">Submit</button>
+                <button type="button" id="submit-kpi-btn" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </div>
-          
+    @csrf
     <!-- Modal -->
     <div class="modal fade" id="max-score-form-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -247,7 +109,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <input type="number" class="form-control" id="max-score-input"/>
+            <input type="text" class="form-control" id="max-score-input"/>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

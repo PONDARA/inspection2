@@ -9,6 +9,7 @@ use App\Model\kpi;
 use Illuminate\Support\Facades\Log;
 use App\Model\Question;
 use App\Model\Question_categorie;
+use Illuminate\Support\Facades\Auth;
 
 class KpiManagementController extends Controller
 {
@@ -24,7 +25,7 @@ class KpiManagementController extends Controller
 
 
     public function questionStore(Request $request){
-         $request->validate([
+        $request->validate([
         'question'=>'required',
         'question_cat_id'=>'required',
       ]);
@@ -97,7 +98,28 @@ class KpiManagementController extends Controller
     }
 
     public function createKPI(Request $request){
-        
+        Log::info($request);
+        $request->validate([
+            'title'=>'required',
+            'all_questions'=>'required',
+        ]);
+
+        $kpi = Kpi::create([
+            'title' => $request->title,
+            'date' => date('Y-m-d'),
+            'publish' => true,
+            'user_admin_id' => Auth::user()->id
+        ]);
+
+        foreach($request->all_questions as $q){
+
+            $kpi->questions()->attach($q['id'],['max_score'=> $q['max_score']]);
+        }
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'success'
+        ]);
     }
 
     public function show()

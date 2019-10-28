@@ -18,8 +18,8 @@ class CreateKpiQuestionTable extends Migration
             $table->unsignedInteger('question_id');
             $table->integer('max_score');
 
-            $table->foreign('kpi_id')->references('id')->on('questions');
-            $table->foreign('question_id')->references('id')->on('kpis');
+            $table->foreign('kpi_id')->references('id')->on('kpis');
+            $table->foreign('question_id')->references('id')->on('questions');
         });
     }
 

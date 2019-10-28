@@ -74,4 +74,87 @@ $(document).ready(function(){
         }
     }
 
+
+
+
+    // request with ajax
+    $('#submit-kpi-btn').click(function(){
+
+        var token = $("input[name='_token']").val()
+        var titleStr = $("#title-input").val()
+
+        var allQuestions = []
+
+
+        var questionElements = $("#selected-question-table tbody tr")
+        $.each(questionElements, (index, value) => {
+
+            var children = $(value).children()
+            questinId = parseInt($(value).attr('id'))
+            questionStr = children[0].innerText
+            maxScoreStr = children[1].innerText
+            allQuestions.push({
+                id : questinId,
+                question : questionStr,
+                max_score : maxScoreStr, 
+            })
+        });
+    
+        var formData = {
+            title : titleStr,
+            all_questions : allQuestions,
+        }
+
+        console.log(allQuestions)
+
+
+        $.ajax({
+            url: "http://127.0.0.1:8000/kpi/create", 
+            beforeSend: function(request) {
+                request.setRequestHeader("X-CSRF-Token", token);
+                request.setRequestHeader("Accept", "application/json");
+            },
+            type : 'POST',
+            data : JSON.stringify(formData),
+            processData: false,
+            contentType: 'application/json',
+            error: function(jqXHR, textStatus, errorThrown){
+                if(jqXHR.status == 422){
+                    var errorJson = JSON.parse(jqXHR.responseText).errors
+                    var errorToDisplayArr = []
+                    console.log(errorJson)
+                    if(errorJson.title){
+                        errorToDisplayArr.push(errorJson.title)
+                    }
+
+                    if(errorJson.all_questions){
+                        errorToDisplayArr.push("No question selected")
+                    }
+                    handleCreateQuestionError(errorToDisplayArr)
+                }
+            },
+            success: function(result){
+                location.replace("http://127.0.0.1:8000/kpiManagement")
+            }
+        });
+    })
+
+    function handleCreateQuestionError(errorArr){
+        resetErrorDisplay()
+        $("#error-message").css('display','')
+        var errorPlace = $("#error-message ul")
+        for(i = 0; i < errorArr.length ; i++){
+            errorPlace.append(createErrorMessageList(errorArr[i]))
+        }
+    }
+
+    function createErrorMessageList(errorStr){
+        return `<li>${errorStr}</li>`
+    }
+
+    function resetErrorDisplay(){
+        $("#error-message").css('display','none')
+        $("#error-message ul").children().remove()
+    }
+
 })

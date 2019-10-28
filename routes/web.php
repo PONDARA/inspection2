@@ -39,6 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('kpi/question/handleform', 'KpiManagementController@handleQuestionForm')->name('kpi_create_question_handler');// deprecated
 	Route::get('kpi/detail/{id}','KpiManagementController@getKpiDetail')->name('kpi_detail');
 	Route::post('/questionStore', 'KpiManagementController@questionStore')->name('questionStore');
+	Route::post('/kpi/create', 'KpiManagementController@createKPI')->name('createKpi');
+
 
 	Route::get('/user/createStuff', 'userController@createStuff')->name('user.createStuff');
 	Route::get('/user/createSecurity', 'userController@createSecurity')->name('user.createSecurity');
@@ -57,3 +59,4 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 // Route::post('/inspectionStore', 'InspectionController@storee')->name('inspectionStore');
+

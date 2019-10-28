@@ -14,5 +14,13 @@ class QuestionCategorySeeder extends Seeder
         DB::table('question_categories')->insert([
             'name' => 'Attitute'
         ]);
+
+        DB::table('question_categories')->insert([
+            'name' => 'Permission'
+        ]);
+
+        DB::table('question_categories')->insert([
+            'name' => 'Ethical'
+        ]);
     }
 }
