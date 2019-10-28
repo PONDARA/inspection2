@@ -70,6 +70,11 @@ class KpiManagementController extends Controller
 
 
     public function getKpiCreationForm(){
+        $kpiActivate = Kpi::where('publish', true)->first();
+        if($kpiActivate != null){
+            return redirect()->back()->with('error', ['You cannot create a new KPI unless all KPI are deactivated!!']);   
+        }
+
         $count_admin = DB::table('users')->where('user_type_id',1)->count();
         $count_stuff = DB::table('users')->where('user_type_id',2)->count();
         $count_security = DB::table('users')->where('user_type_id',3)->count();
@@ -95,6 +100,20 @@ class KpiManagementController extends Controller
         ];
 
         return view('kpi.kpiCreationForm', $data);
+    }
+
+    public function deactivateKPI(Request $request){
+        Log::info($request['kpi_id'] . ' something');
+        Log::info($request);
+        $kpi = Kpi::find($request->kpi_id);
+        Log::info($request['kpi_id']);
+        if($kpi == null){
+            return response()->json(['code'=>422]);
+        }
+
+        $kpi->publish = false;
+        $kpi->save();
+        return response()->json(['code'=>200]);
     }
 
     public function createKPI(Request $request){
@@ -128,12 +147,10 @@ class KpiManagementController extends Controller
         $count_security = DB::table('users')->where('user_type_id',3)->count();
 
         $count_inspection = DB::table('user_inspects')->count();
-        $kpis = Kpi::where('user_admin_id', Auth::user()->id)->get();
+        $kpis = Kpi::all();
         foreach($kpis as $kpi){
             $kpi['length'] = count($kpi->questions()->get());
         }
-
-        Log::info($kpis);
 
         $data = [
             'count_admin' => $count_admin,

@@ -5,8 +5,8 @@
 @section('css')
 <style>
     #create-kpi-container{
-        margin-bottom: 25px;
-        margin-top: 40px;
+        margin-bottom: 13px;
+        margin-top: 23px;
     }
 
     .middle-row {
@@ -52,6 +52,14 @@
 @section('content')
     @include('layouts.headers.cards')
     <div class="container-fluid" style="margin-top: 10px">
+        <div class="row">
+            <div class="col">
+                @if(\Session::has('error'))
+                    <div class="alert alert-danger mb-0" role="alert">{!! \Session::get('error')[0] !!}</div>
+                @endif 
+            </div>
+        </div>
+
         <div id="create-kpi-container" class="row justify-content-end">
             <div class="col" style="text-align:end;">
                 <a href="{{ route('kpi_creation_form') }}">
@@ -77,9 +85,9 @@
                         <tr class="data-container-row">
                             <td>{{ $kpi->title }}</td>
                             <td>{{ $kpi->date }}</td>
-                            <td class="@if ($kpi->publish == 1) <?php echo 'status-blue' ?>  @else <?php echo 'status' ?> @endif">
+                            <td kpi-id="{{ $kpi->id }}" class="kpi-status @if ($kpi->publish == 1) <?php echo 'status-blue' ?>  @else <?php echo 'status' ?> @endif">
                                 @if ($kpi->publish == 1) <?php echo 'active' ?> 
-                                @else <?php echo 'active' ?>
+                                @else <?php echo 'inactive' ?>
                                 @endif
                             </td>
                             <td>{{ $kpi->length }}</td>
@@ -90,12 +98,14 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                         <a class="dropdown-item" href="#">View</a>
-                                        <a class="dropdown-item" href="#">Activate</a>
+                                        @if ($kpi->publish == 1) <a  class="dropdown-item deactivate-btn" href="">Deactivate</a>
+                                        @endif
                                     </div>
                                 </div>
                             </td>
                         </tr>
                     @endforeach
+                    @csrf
                     {{-- status-blue --}}
                 </tbody>
             </table>
