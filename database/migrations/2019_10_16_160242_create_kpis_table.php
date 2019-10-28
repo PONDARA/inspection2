@@ -16,8 +16,9 @@ class CreateKpisTable extends Migration
         Schema::create('kpis', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('publish');
+            $table->string('title');
             $table->date('date');
-
+            
             $table->unsignedInteger('user_admin_id');
         });
     }

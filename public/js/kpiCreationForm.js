@@ -15,11 +15,11 @@ $(document).ready(function(){
             idStr = `#${questionId}`
             $(idStr).remove()
         }else{
-            createSelectedQuestion(questionStr, 9, this, questionId)
+            createSelectedQuestion(questionStr, this, questionId)
         }
     })
 
-    function createSelectedQuestion(question, maxScore, activateBtn, qId){
+    function createSelectedQuestion(question, activateBtn, qId){
         var success = false
         var maxScoreModal = $('#max-score-form-modal')
 
@@ -44,7 +44,7 @@ $(document).ready(function(){
             inputMaxScore = $("#max-score-input").val()
             if(!isNaN(+inputMaxScore) && +inputMaxScore > 0){
                 console.log("nothong")
-                var selectedQuestionElement = $(`<tr id='${qId}'><td>${question}</td><td>${maxScore}</td><td class='remove-btn'>remove</td></tr>`);
+                var selectedQuestionElement = $(`<tr id='${qId}'><td>${question}</td><td>${inputMaxScore}</td><td class='remove-btn'>remove</td></tr>`);
                 success = true
                 tableSelectedQuestion.append(selectedQuestionElement)
                 // console.log(selectedQuestionElement.children('.remove-btn'));
@@ -60,15 +60,6 @@ $(document).ready(function(){
                 showBorderInputMaxScoreError(true)
             }
         })
-
-            // var selectedQuestionElement = $(`<tr id='${qId}'><td>${question}</td><td>${maxScore}</td><td class='remove-btn'>remove</td></tr>`);
-
-            // tableSelectedQuestion.append(selectedQuestionElement)
-            // // console.log(selectedQuestionElement.children('.remove-btn'));
-            // $(selectedQuestionElement.children('.remove-btn')[0]).click(function(){
-            //     $(activateBtn).trigger('click')
-            //     selectedQuestionElement.remove()
-            // })
     }
     $("#max-score-input").keypress(function(){
         showBorderInputMaxScoreError(false)

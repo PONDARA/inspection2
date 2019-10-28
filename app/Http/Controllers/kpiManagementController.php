@@ -96,7 +96,9 @@ class KpiManagementController extends Controller
         return view('kpi.kpiCreationForm', $data);
     }
 
-
+    public function createKPI(Request $request){
+        
+    }
 
     public function show()
     {
@@ -116,8 +118,6 @@ class KpiManagementController extends Controller
 
         return view('kpi.kpiManagement', $data);
     }
-
-
 
     public function destroy($id)
     {
