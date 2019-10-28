@@ -73,69 +73,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="data-container-row">
-                    <td>Mark</td>
-                    <td>Mark</td>
-                    <td class="status">disable</td>
-                    <td>@mdo</td>
-                    <td> 
-                        <div class="dropdown">
-                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                <a class="dropdown-item" href="#">View</a>
-                                <a class="dropdown-item" href="#">Activate</a>
-                            </div>
-                        </div>
-                    </td>
-                    </tr>
-                    <tr class="middle-row"></tr>
-                    <tr class="data-container-row">
-                    <td>Mark</td>
-                    <td>Jacob</td>
-                    <td class="status-blue">active</td>
-                    <td>@fat</td>
-                    <td> 
-                        <div class="dropdown">
-                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                <a class="dropdown-item" href="#">View</a>
-                                <a class="dropdown-item" href="#">Deactivate</a>
-                            </div>
-                        </div>
-                    </td>
-                    </tr>
-                    <tr class="middle-row"></tr>
-                    <tr class="data-container-row">
-                    <td>Mark</td>
-                    <td>Larry</td>
-                    <td class="status">disable</td>
-                    <td>@twitter</td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                <a class="dropdown-item" href="#">View</a>
-                                <a class="dropdown-item" href="#">Activate</a>
-                            </div>
-                        </div>
-                    </td>
-                    </tr>
+                    @foreach ($kpis as $kpi)
+                        <tr class="data-container-row">
+                            <td>{{ $kpi->title }}</td>
+                            <td>{{ $kpi->date }}</td>
+                            <td class="@if ($kpi->publish == 1) <?php echo 'status-blue' ?>  @else <?php echo 'status' ?> @endif">
+                                @if ($kpi->publish == 1) <?php echo 'active' ?> 
+                                @else <?php echo 'active' ?>
+                                @endif
+                            </td>
+                            <td>{{ $kpi->length }}</td>
+                            <td> 
+                                <div class="dropdown">
+                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <a class="dropdown-item" href="#">View</a>
+                                        <a class="dropdown-item" href="#">Activate</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                    {{-- status-blue --}}
                 </tbody>
             </table>
         </div>
     </div>
- <!--   
-     <div class="container-fluid" style="margin-top: 10px">
-        <div class="row text-center">
-           <div class="col-12">
-                @include('layouts.footers.auth')
-           </div>
-        </div>
-    </div> -->
+
+    @include('layouts.footers.auth')
+
 @endsection

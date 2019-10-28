@@ -112,7 +112,6 @@ class KpiManagementController extends Controller
         ]);
 
         foreach($request->all_questions as $q){
-
             $kpi->questions()->attach($q['id'],['max_score'=> $q['max_score']]);
         }
 
@@ -129,13 +128,19 @@ class KpiManagementController extends Controller
         $count_security = DB::table('users')->where('user_type_id',3)->count();
 
         $count_inspection = DB::table('user_inspects')->count();
+        $kpis = Kpi::where('user_admin_id', Auth::user()->id)->get();
+        foreach($kpis as $kpi){
+            $kpi['length'] = count($kpi->questions()->get());
+        }
+
+        Log::info($kpis);
 
         $data = [
             'count_admin' => $count_admin,
             'count_stuff' => $count_stuff,
             'count_security' => $count_security,
             'count_inspection' => $count_inspection,
-            
+            'kpis' => $kpis
         ];
 
         return view('kpi.kpiManagement', $data);
