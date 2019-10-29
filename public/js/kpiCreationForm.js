@@ -134,14 +134,11 @@ $(document).ready(function(){
                 }
             },
             success: function(result){
-<<<<<<< HEAD
-                location.replace("/kpiManagement")
-=======
+
                 $("#create-kpi-success-modal").modal('show')
                 $("#create-kpi-success-modal").on('hidden.bs.modal', function (e) {
-                    location.replace("http://127.0.0.1:8000/kpiManagement")
+                    location.replace("/kpiManagement")
                 }) 
->>>>>>> 736f1fb2a7b2a064fcf37c90b0605abeb7dddce1
             }
         });
     })
