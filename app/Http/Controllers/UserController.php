@@ -11,6 +11,7 @@ use App\Model\location;
 use Illuminate\Http\Request;
 use Image;
 use Illuminate\Support\Facades\storage;
+use App\Model\historyEdit;
 class UserController extends Controller
 {
     /**
@@ -100,7 +101,14 @@ class UserController extends Controller
       ]);
         if($request->hasFile('profile_img')){
             $securityEdit = User::find($request->securityId);
-
+            $historyEdit = new historyEdit([
+            'security_guard_id' => $securityEdit->id,
+            'old_name'=>$securityEdit->name,
+            'old_location_id'=> $securityEdit->location_id,
+            'created_at'=>now(),
+            'updated_at'=>now(),
+          ]);
+             $historyEdit->save();
              $oldphoto = 'public/securityGuard/' . $securityEdit->profile_img;
             if(Storage::disk('local')->exists( $oldphoto )){
                 Storage::disk('local')->delete($oldphoto);
@@ -118,6 +126,15 @@ class UserController extends Controller
         }
         else{
             $securityEdit = User::find($request->securityId);
+            // dd($securityEdit);
+            $historyEdit = new historyEdit([
+            'security_guard_id' => $securityEdit->id,
+            'old_name'=>$securityEdit->name,
+            'old_location_id'=> $securityEdit->location_id,
+            'created_at'=>now(),
+            'updated_at'=>now(),
+          ]);
+            $historyEdit->save();
             $securityEdit->name=$request->get('name');
             $securityEdit->phone_number=$request->get('phone_number');
             $securityEdit->location_id=$request->get('location');
