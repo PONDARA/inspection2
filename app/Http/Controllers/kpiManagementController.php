@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Log;
 use App\Model\Question;
 use App\Model\Question_categorie;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Model\User_type;
 
 class KpiManagementController extends Controller
 {
@@ -84,8 +86,6 @@ class KpiManagementController extends Controller
         return view('kpi.kpiDetail', $data);
     }
 
-
-
     public function getKpiCreationForm(){
         $kpiActivate = Kpi::where('publish', true)->first();
         if($kpiActivate != null){
@@ -120,12 +120,18 @@ class KpiManagementController extends Controller
     }
 
     public function deactivateKPI(Request $request){
-        Log::info($request['kpi_id'] . ' something');
-        Log::info($request);
         $kpi = Kpi::find($request->kpi_id);
+
         Log::info($request['kpi_id']);
         if($kpi == null){
             return response()->json(['code'=>422]);
+        }
+        
+        $allSecurityCount = count(User_type::all()[2]->users()->get());
+        $anwswerdSecurityCount = count($kpi->kpiUsers()->get());
+
+        if($anwswerdSecurityCount < $allSecurityCount){
+            return \response()->json(['code'=> 422, 'msg' => 'Cannot deactivate, because all guards are not yet complete the KPI']);
         }
 
         $kpi->publish = false;
@@ -142,7 +148,7 @@ class KpiManagementController extends Controller
 
         $kpi = Kpi::create([
             'title' => $request->title,
-            'date' => date('Y-m-d'),
+            'date' => date('Y-m-d h:m:s'),
             'publish' => true,
             'user_admin_id' => Auth::user()->id
         ]);
@@ -164,7 +170,7 @@ class KpiManagementController extends Controller
         $count_security = DB::table('users')->where('user_type_id',3)->count();
 
         $count_inspection = DB::table('user_inspects')->count();
-        $kpis = Kpi::all();
+        $kpis = Kpi::orderBy('date', 'desc')->get();
         foreach($kpis as $kpi){
             $kpi['length'] = count($kpi->questions()->get());
         }
