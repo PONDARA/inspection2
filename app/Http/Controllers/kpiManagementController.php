@@ -85,7 +85,7 @@ class KpiManagementController extends Controller
         ];
         return view('kpi.kpiDetail', $data);
     }
-    
+
     public function getKpiCreationForm(){
         $kpiActivate = Kpi::where('publish', true)->first();
         if($kpiActivate != null){
@@ -148,7 +148,7 @@ class KpiManagementController extends Controller
 
         $kpi = Kpi::create([
             'title' => $request->title,
-            'date' => date('Y-m-d'),
+            'date' => date('Y-m-d h:m:s'),
             'publish' => true,
             'user_admin_id' => Auth::user()->id
         ]);

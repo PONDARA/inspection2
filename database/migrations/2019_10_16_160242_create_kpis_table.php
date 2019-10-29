@@ -17,7 +17,7 @@ class CreateKpisTable extends Migration
             $table->increments('id');
             $table->boolean('publish');
             $table->string('title');
-            $table->date('date');
+            $table->dateTime('date');
             
             $table->unsignedInteger('user_admin_id');
         });
