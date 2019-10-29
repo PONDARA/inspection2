@@ -134,7 +134,10 @@ $(document).ready(function(){
                 }
             },
             success: function(result){
-                location.replace("http://127.0.0.1:8000/kpiManagement")
+                $("#create-kpi-success-modal").modal('show')
+                $("#create-kpi-success-modal").on('hidden.bs.modal', function (e) {
+                    location.replace("http://127.0.0.1:8000/kpiManagement")
+                }) 
             }
         });
     })

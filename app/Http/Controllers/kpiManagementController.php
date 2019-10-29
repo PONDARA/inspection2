@@ -85,9 +85,7 @@ class KpiManagementController extends Controller
         ];
         return view('kpi.kpiDetail', $data);
     }
-
-
-
+    
     public function getKpiCreationForm(){
         $kpiActivate = Kpi::where('publish', true)->first();
         if($kpiActivate != null){
