@@ -109,7 +109,7 @@ $(document).ready(function(){
 
 
         $.ajax({
-            url: "http://127.0.0.1:8000/kpi/create", 
+            url: "/kpi/create", 
             beforeSend: function(request) {
                 request.setRequestHeader("X-CSRF-Token", token);
                 request.setRequestHeader("Accept", "application/json");
@@ -134,7 +134,7 @@ $(document).ready(function(){
                 }
             },
             success: function(result){
-                location.replace("http://127.0.0.1:8000/kpiManagement")
+                location.replace("/kpiManagement")
             }
         });
     })
