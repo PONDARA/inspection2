@@ -97,7 +97,7 @@
                                         <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a class="dropdown-item" href="#">View</a>
+                                        <a class="dropdown-item" href="{{ route('kpi_detail', ['kpi_id'=>$kpi->id]) }}">View</a>
                                         @if ($kpi->publish == 1) <a  class="dropdown-item deactivate-btn" href="">Deactivate</a>
                                         @endif
                                     </div>

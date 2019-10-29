@@ -41,8 +41,6 @@ class KpiManagementController extends Controller
         return view('kpi.kpiQuestion', $data,compact('count_admin','count_security','count_stuff','count_inspection','questionCategories'));
     }
 
-
-
     public function questionStore(Request $request){
         $request->validate([
         'question'=>'required',
@@ -57,8 +55,6 @@ class KpiManagementController extends Controller
         return back()->withStatus(__('Question successfully created.'));
     }
 
-
-
     public function handleQuestionForm(Request $request){
         foreach($request->questions as $q){
             Question::create([
@@ -67,20 +63,57 @@ class KpiManagementController extends Controller
         }
     }
 
-
-
-
-    public function getKpiDetail($id){
+    public function getKpiDetail(Request $request){
+        Log::info($request);
         $count_admin = DB::table('users')->where('user_type_id',1)->count();
         $count_stuff = DB::table('users')->where('user_type_id',2)->count();
         $count_security = DB::table('users')->where('user_type_id',3)->count();
         $count_inspection = DB::table('user_inspects')->count();
+
+        $allUser = User_type::all()[2]->users()->select('id','name', 'profile_img')->get();
+
+        $kpi = Kpi::find($request->kpi_id);
+        $kpiUsers = $kpi->kpiUsers()->get();
+
+        foreach($allUser as $v){
+            $v->is_answered = false;
+            foreach($kpiUsers as $kpiUser){
+                Log::info($kpiUser .  ' ' . $v);
+                if($kpiUser->user_guard_id == $v->id){
+                    $v->is_answered = true;
+                    $v->inspector_name = User::find($kpiUser->user_inspector_id)->name;
+                    break;
+                }
+            }
+
+        }
+
+        
+        $kpiQuestions = $kpi->questions()->get();
+        $title = $kpi->title;
+        $dateTime = $kpi->date;
+        $questionCount = count($kpiQuestions);
+        $allSecurityCount = count($allUser);
+        $allAnsweredSecurityCount = count($kpiUsers);
+
+        Log::info($kpiQuestions);
+
 
         $data = [
             'count_admin' => $count_admin,
             'count_stuff' => $count_stuff,
             'count_security' => $count_security,
             'count_inspection' => $count_inspection,
+
+            'kpi_questions' => $kpiQuestions,
+            'all_security' => $allUser,
+            'kpi_id' => $kpi->id,
+            'kpi_is_active' => $kpi->publish,
+            'title' => $title,
+            'date_time' => $dateTime, 
+            'question_count' => $questionCount,
+            'all_security_count'=> $allSecurityCount,
+            'all_answered_security_count' => $allAnsweredSecurityCount
             
         ];
         return view('kpi.kpiDetail', $data);

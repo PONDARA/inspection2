@@ -37,10 +37,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/kpi/kpi-creation-form', 'KpiManagementController@getKpiCreationForm')->name('kpi_creation_form');
 	Route::get('kpi/question/form', 'KpiManagementController@getQuestionForm')->name('kpi_create_question');
 	Route::post('kpi/question/handleform', 'KpiManagementController@handleQuestionForm')->name('kpi_create_question_handler');// deprecated
-	Route::get('kpi/detail/{id}','KpiManagementController@getKpiDetail')->name('kpi_detail');
+	Route::get('kpi/detail','KpiManagementController@getKpiDetail')->name('kpi_detail');
 	Route::post('/questionStore', 'KpiManagementController@questionStore')->name('questionStore');
 	Route::post('/kpi/create', 'KpiManagementController@createKPI')->name('createKpi');
-	Route::post('/kpi/deactivate', 'KpiManagementController@deactivateKPI')->name('createKpi');
+	Route::post('/kpi/deactivate', 'KpiManagementController@deactivateKPI')->name('deactivateKpi');
 
 
 	Route::get('/user/createStuff', 'userController@createStuff')->name('user.createStuff');
