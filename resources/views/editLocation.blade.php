@@ -39,17 +39,17 @@
                         <label for="map-search">Search Address </label>
                         <input id="map-search" class="controls" type="text" placeholder="Search Box" size="104" name="location_search" required autofocus value="{{$location->location_search}}">
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row col-12">
                         <div class="col-4">
-                            <label for="city">Place</label>
+                            <label for="city">Place:</label>
                         <input type="text" class="reg-input-city" id="city" name="location_name" value="{{$location->location_name}}" required autofocus>
                         </div>
                         <div class="col-4">
-                            <label for="lat">lat</label>
+                            <label for="lat">latitude:</label>
                         <input type="text" class="latitude" id="lat" name="latitude" value="{{$location->latitude}}">
                         </div>
                         <div class="col-4">
-                            <label for="long">long</label>
+                            <label for="long">longtitude:</label>
                         <input type="text" class="longtitude" id="long" name="longtitude" value="{{$location->longtitude}}">
                         </div>
                     </div>
