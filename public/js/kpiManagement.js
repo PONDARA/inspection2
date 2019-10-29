@@ -22,11 +22,16 @@ $(document).ready(function(){
             processData: false,
             contentType: 'application/json',
             error: function(jqXHR, textStatus, errorThrown){
-                console.log("jqXHR staus " + jqXHR.status)
+
             },
             success: function(result){
-                handleDeactivateSucess(kpiStatusEle);
-                $(btn).remove();
+                if(result.code == 200){
+                    handleDeactivateSucess(kpiStatusEle);
+                    $(btn).remove();
+                }else{
+                    $($("#deactivate-error-modal").find('.modal-body')).text(result.msg)
+                    $("#deactivate-error-modal").modal('show')
+                }
             }
         });
     })
