@@ -33,17 +33,17 @@
                         <label for="map-search">Search Address </label>
                         <input id="map-search" class="controls" type="text" placeholder="Search Box" size="104" name="location_search" required autofocus>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row col-12">
                         <div class="col-4">
                             <label for="city">Place</label>
                         <input type="text" class="reg-input-city" id="city" name="location_name" required autofocus>
                         </div>
                         <div class="col-4">
-                            <label for="lat">lat</label>
+                            <label for="lat">latitude</label>
                         <input type="text" class="latitude" id="lat" name="latitude">
                         </div>
                         <div class="col-4">
-                            <label for="long">long</label>
+                            <label for="long">longtitude</label>
                         <input type="text" class="longtitude" id="long" name="longtitude">
                         </div>
                     </div>

@@ -23,6 +23,9 @@ class CreateUserInspectsTable extends Migration
             $table->string('photo4');
             $table->string('photo5');
             $table->string('comment');
+            $table->string('status');
+            $table->string('latitude');
+            $table->string('longtitude');
             $table->timestamps();
         });
     }

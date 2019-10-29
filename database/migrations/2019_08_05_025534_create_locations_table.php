@@ -18,6 +18,7 @@ class CreateLocationsTable extends Migration
             $table->string('longtitude');
             $table->string('latitude');
             $table->string('location_name');
+            $table->string('location_search');
             $table->timestamps();
         });
     }
