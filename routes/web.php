@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/questionStore', 'KpiManagementController@questionStore')->name('questionStore');
 	Route::post('/kpi/create', 'KpiManagementController@createKPI')->name('createKpi');
 	Route::post('/kpi/deactivate', 'KpiManagementController@deactivateKPI')->name('deactivateKpi');
+	Route::get('/kpi/question-cateogry','KpiManagementController@getQustionCategory');
 
 
 	Route::get('/user/createStuff', 'userController@createStuff')->name('user.createStuff');

@@ -42,16 +42,26 @@ class KpiManagementController extends Controller
     }
 
     public function questionStore(Request $request){
+        Log::info($request->header('Accept'));
         $request->validate([
-        'question'=>'required',
+        'question'=> 'required',
         'question_cat_id'=>'required',
       ]);
         $question = new Question([
         'question' => $request->get('question'),
         'objective'=> $request->get('objective'),
         ]);
-        $question->question_cate_id=$request->get('question_cat_id');
+        $question->question_cate_id = $request->get('question_cat_id');
         $question->save();
+
+        if($request->header('Accept') == 'application/json'){
+            return response()->json([
+                'code' => 200,
+                'question_id' => $question->id,
+                'question_cate_id' => Question_categorie::find($question->question_cate_id)
+            ]);
+        }
+
         return back()->withStatus(__('Question successfully created.'));
     }
 
@@ -61,6 +71,12 @@ class KpiManagementController extends Controller
                 'question' => $q
             ]);
         }
+    }
+
+    public function getQustionCategory(){
+        $questionCate = Question_categorie::all();
+
+        return response()->json($questionCate);
     }
 
     public function getKpiDetail(Request $request){

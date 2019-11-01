@@ -91,14 +91,51 @@
                 </div>
             </div>
         </div>
+        <div class="row ">
+            <div class="col-3 justify-content-center" style="">
+                <button type="button" id="add-qusetion-btn" class="btn" style="background:#5F71E4;color:white;">Add Question</button>
+            </div>
+        </div>
         <div class="row justify-content-md-center">
             <div class="col-3 justify-content-center" style="text-align:center;">
-                <button type="button" id="submit-kpi-btn" class="btn btn-primary">Submit</button>
+                <button type="button" id="submit-kpi-btn" class="btn" style="background:#2DCE89;color:white">Submit</button>
             </div>
         </div>
     </div>
     @csrf
-    <!-- Modal -->
+
+    <!--add-question-form Modal -->
+    <div class="modal fade" id="add-question-form-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Question Form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" required class="form-control" placeholder="Question" id="question-input"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Objective" id="objective-input"/>
+                </div>
+                <div class="form-group">
+                    <label for="category-select">Select Category</label>
+                    <select class="form-control" name="category" id="category-select">
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button style="background:#5F71E4" type="button" id="add-question-form-btn" class="btn btn-primary">Add</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- max-score-form Modal -->
     <div class="modal fade" id="max-score-form-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -119,7 +156,7 @@
         </div>
     </div>
 
-    <!-- Modal sucess -->
+    <!-- create-kpi-success Modal -->
     <div class="modal fade" id="create-kpi-success-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
