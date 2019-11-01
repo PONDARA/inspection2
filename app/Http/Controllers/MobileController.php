@@ -33,6 +33,7 @@ class MobileController extends Controller
     }
     public function inspectionList(Request $request)
     {
+      // dd($request->all());
        $inspectionList = User_inspect::where('inspector_id','=',$request->inspector_id)->get();
        dd($inspectionList);
        return [
@@ -98,6 +99,9 @@ class MobileController extends Controller
         'inspector_id' => $request->get('inspector_id'),
         'guard_id'=> $request->get('guard_id'),
         'comment'=> $request->get('comment'),
+        'status'=> $request->get('status'),
+        'latitude'=> $request->get('latitude'),
+        'longtitude'=> $request->get('longtitude'),
         'photo1'=>$filename[0],
         'photo2'=>$filename[1], 
         'photo3'=>$filename[2],

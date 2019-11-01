@@ -15,8 +15,8 @@ class AddForeignToKpiUserTable extends Migration
     {
         Schema::table('kpi_user', function (Blueprint $table) {
             $table->foreign('kpi_id')->references('id')->on('kpis');
-            $table->foreign('user_guard_id')->references('id')->on('users');
-            $table->foreign('user_inspector_id')->references('id')->on('users');
+            $table->foreign('user_guard_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_inspector_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

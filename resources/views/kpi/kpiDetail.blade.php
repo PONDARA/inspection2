@@ -43,7 +43,7 @@
 
                         @foreach ($all_security as $item)
                             <tr class="data-container-row">
-                                <td> <img src="{{ $item->profile_img }}" width="30" class="rounded" alt="Cinque Terre"> </td>
+                                <td> <img src="/storage/securityGuard/{{ $item->profile_img }}" width="40" class="rounded" alt="Cinque Terre"> </td>
                                 <td>{{ $item->name }}</td>
                                 <td>@if ($item->is_answered) {{ $item->inspector_name }}
                                     @else ------
