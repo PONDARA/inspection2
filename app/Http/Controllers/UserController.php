@@ -28,7 +28,7 @@ class UserController extends Controller
         $admins = User::where('user_type_id',1)->paginate(10);
         $stuffs =User::where('user_type_id',2)->paginate(10);
         $securitys =User::where('user_type_id',3)->paginate(10);
-        $count_inspection = $guards = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->where(DB::raw('substr(user_inspects.created_at,1,10)'),'=',date("Y-m-d"))->select('user_inspects.*','users.name')->count();
+        $count_inspection = $guards = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->count();
         return view('users.index', ['users' => $model->paginate(15)],compact('count_admin','count_stuff','count_security','count_inspection','admins','stuffs','securitys'));
     }
 
