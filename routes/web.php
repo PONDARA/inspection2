@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	Route::get('/user/createStuff', 'UserController@createStuff')->name('user.createStuff');
+	Route::get('/user/createSecurity', 'UserController@createSecurity')->name('user.createSecurity');
 	Route::get('/user/editSecutiy', 'UserController@editSecurity')->name('user.editSecutiy');
 	Route::post('/user/editSecurityUpdate', 'UserController@editSecurityUpdate')->name('user.editSecurityUpdate');
 
