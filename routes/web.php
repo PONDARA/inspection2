@@ -44,10 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/kpi/question-cateogry','KpiManagementController@getQustionCategory');
 
 
-	Route::get('/user/createStuff', 'userController@createStuff')->name('user.createStuff');
-	Route::get('/user/createSecurity', 'userController@createSecurity')->name('user.createSecurity');
-	Route::get('/user/editSecutiy', 'userController@editSecurity')->name('user.editSecutiy');
-	Route::post('/user/editSecurityUpdate', 'userController@editSecurityUpdate')->name('user.editSecurityUpdate');
+	Route::get('/user/createStuff', 'UserController@createStuff')->name('user.createStuff');
+	Route::get('/user/editSecutiy', 'UserController@editSecurity')->name('user.editSecutiy');
+	Route::post('/user/editSecurityUpdate', 'UserController@editSecurityUpdate')->name('user.editSecurityUpdate');
 
 	Route::post('/storeStuff', 'UserController@storeStuff')->name('user.storeStuff');
 	Route::post('/storeSecurity', 'UserController@storeSecurity')->name('user.storeSecurity');
