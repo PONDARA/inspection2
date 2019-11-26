@@ -15,6 +15,7 @@ use Image;
 use Illuminate\Support\Facades\storage;
 use Illuminate\Support\Facades\DB;
 use App\Model\User_inspect;
+use App\Model\KpiUser;
 
 class MobileController extends Controller
 {
