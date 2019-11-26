@@ -16,11 +16,10 @@ class CreateKpiUserTable extends Migration
         Schema::create('kpi_user', function (Blueprint $table) {
             $table->increments('id');
             $table->float('total_score');
-            $table->date('date');
-            
             $table->unsignedInteger('kpi_id');
             $table->unsignedInteger('user_guard_id');
             $table->unsignedInteger('user_inspector_id');
+            $table->timestamps();
         });
     }
 

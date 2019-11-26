@@ -125,7 +125,7 @@ class MobileController extends Controller
     {
        $kpi_user = new KpiUser([
         'total_score' => $request->get('total_score'),
-        'created_at'=> now(),
+        'creted_at'=> now(),
         'kpi_id'=>$request->get('kpi_id'),
         'user_guard_id'=> $request->get('user_guard_id'),
         'user_inspector_id'=> $request->get('user_inspector_id'),
