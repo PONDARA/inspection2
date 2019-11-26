@@ -47,7 +47,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Stuff User</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Inspector User</h5>
                                     <span class="h2 font-weight-bold mb-0">{{$count_stuff}} Total</span>
                                 </div>
                                 <div class="col-auto">
@@ -86,7 +86,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Security</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Security guard</h5>
                                     <span class="h2 font-weight-bold mb-0">{{$count_security}} Total</span>
                                 </div>
                                 <div class="col-auto">

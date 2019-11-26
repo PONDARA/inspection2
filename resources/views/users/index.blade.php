@@ -14,7 +14,7 @@
                             <div class="col-2">
                                 <select class="custom-select mb-0" id="inputGroupSelect01" >
                                     <option value="Admin" selected>Admin</option>
-                                    <option value="Stuff">Stuff</option>
+                                    <option value="Stuff">Inspector</option>
                                     <option value="Security guard">Security guard</option>
                                 </select>
                                 <!-- <h3 class="mb-0">{{ __('Users') }}</h3> -->
@@ -28,7 +28,7 @@
                             </div>
                             <!-- add stuff -->
                             <div class="col-4 text-right" id="add_stuff">
-                                <a href="{{ route('user.createStuff') }}" class="btn btn-sm btn-primary">{{ __('Add Stuff') }}</a>
+                                <a href="{{ route('user.createStuff') }}" class="btn btn-sm btn-primary">{{ __('Add Inspector') }}</a>
                             </div>
                             <!-- add security guard -->
                             <div class="col-4 text-right" id="add_security_guard">

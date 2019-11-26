@@ -10,28 +10,26 @@
     @include('layouts.headers.inspectionHeader')
     <div class="container-fluid" style="margin-top: 10px">
         <div class="row text-center">
-            <div class="col-lg-4 ">
-                <img src="storage/inspection/{{$inspection->photo1}}" id="inspectionItemImg">
+            <div class="col-lg-1 ">
+        
             </div>
-            <div class="col-lg-4" >
-               <img src="storage/inspection/{{$inspection->photo2}}" id="inspectionItemImg">
+            <div class="col-lg-2 ">
+                <img src="storage/inspections/{{$inspection->photo1}}" id="inspectionItemImg">
             </div>
-            <div class="col-lg-4 ">
-               <img src="storage/inspection/{{$inspection->photo3}}" id="inspectionItemImg">
+            <div class="col-lg-2" >
+               <img src="storage/inspections/{{$inspection->photo2}}" id="inspectionItemImg">
             </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-lg-2">
-                
+            <div class="col-lg-2 ">
+               <img src="storage/inspections/{{$inspection->photo3}}" id="inspectionItemImg">
             </div>
-            <div class="col-lg-4 " >
-               <img src="storage/inspection/{{$inspection->photo4}}" id="inspectionItemImg">
-            </div>
-            <div class="col-lg-4">
-                <img src="storage/inspection/{{$inspection->photo5}}" id="inspectionItemImg">
+            <div class="col-lg-2 " >
+               <img src="storage/inspections/{{$inspection->photo4}}" id="inspectionItemImg">
             </div>
             <div class="col-lg-2">
-                
+                <img src="storage/inspections/{{$inspection->photo5}}" id="inspectionItemImg">
+            </div>
+            <div class="col-lg-1 ">
+        
             </div>
         </div>
     </div>
@@ -67,7 +65,7 @@
         </div>
     </div>
     @endforeach
-     <div class="container-fluid" style="margin-top: 10px">
+     <div class="container-fluid mt-10">
         <div class="row text-center">
            <div class="col-12">
            		@include('layouts.footers.auth')

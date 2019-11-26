@@ -16,5 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->group(function(){
 	Route::post('/inspectionStore', 'MobileController@storeInspection')->name('inspectionStore');
 	Route::post('/inspectionList', 'MobileController@inspectionList')->name('inspectionList');
+	Route::post('/kpiStore', 'MobileController@KPIstore')->name('kpiStore');
 });
 Route::post('login', 'MobileController@login')->name('login');

@@ -24,10 +24,19 @@ class MobileController extends Controller
             $user = Auth::user();
             $token = $user->createToken('Myapp')->accessToken;
             return [
-                'msg'=>true, 
+                'msg'=>"inspector", 
                 'user_id'=>Auth::id(),
                 'token'=>$token];
-        } else {
+        } 
+        elseif (auth()->attempt(['email' => $request->email, 'password' => $request->password,'user_type_id'=>1])){ 
+            $user = Auth::user();
+            $token = $user->createToken('Myapp')->accessToken;
+            return [
+                'msg'=>"inspector", 
+                'user_id'=>Auth::id(),
+                'token'=>$token];
+        }
+        else {
             return response()->json(['token'=>'no access token','msg'=>'Incorrect email or password'], 401);
         } 
     }
@@ -52,7 +61,7 @@ class MobileController extends Controller
             if(count($pawnfiles)==1){
               for ($i=0;$i<count($pawnfiles);$i++) {
                 $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
-                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspection/' . $filename[$i] ) );
+                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspections/' . $filename[$i] ) );
               }  
               for($j=1;$j<5;$j++){
                  array_push($filename[$j],"null");
@@ -61,7 +70,7 @@ class MobileController extends Controller
             elseif(count($pawnfiles)==2){
               for ($i=0;$i<count($pawnfiles);$i++) {
                 $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
-                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspection/' . $filename[$i] ) );
+                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspections/' . $filename[$i] ) );
               }  
               for($j=2;$j<5;$j++){
                  array_push($filename[$j],"null");
@@ -70,7 +79,7 @@ class MobileController extends Controller
             elseif(count($pawnfiles)==3){
               for ($i=0;$i<count($pawnfiles);$i++) {
                 $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
-                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspection/' . $filename[$i] ) );
+                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspections/' . $filename[$i] ) );
               }  
               for($j=3;$j<5;$j++){
                  array_push($filename[$j],"null");
@@ -79,7 +88,7 @@ class MobileController extends Controller
             elseif(count($pawnfiles)==4){
               for ($i=0;$i<count($pawnfiles);$i++) {
                 $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
-                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspection/' . $filename[$i] ) );
+                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspections/' . $filename[$i] ) );
               }  
               for($j=4;$j<5;$j++){
                  array_push($filename[$j],"null");
@@ -88,7 +97,7 @@ class MobileController extends Controller
             elseif(count($pawnfiles)==5){
               for ($i=0;$i<count($pawnfiles);$i++) {
                 $filename[$i] = time()+$i . '.' . $pawnfiles[$i]->getClientOriginalExtension();
-                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspection/' . $filename[$i] ) );
+                Image::make($pawnfiles[$i])->resize(600, 600)->save( public_path('/storage/inspections/' . $filename[$i] ) );
               }  
             }
         }
@@ -109,6 +118,18 @@ class MobileController extends Controller
         'photo5'=>$filename[4],
       ]);
       $inspection->save();
+      return response()->json("success");
+    }
+     public function KPIstore(Request $request)
+    {
+       $kpi_user = new KpiUser([
+        'total_score' => $request->get('total_score'),
+        'created_at'=> now(),
+        'kpi_id'=>$request->get('kpi_id'),
+        'user_guard_id'=> $request->get('user_guard_id'),
+        'user_inspector_id'=> $request->get('user_inspector_id'),
+      ]);
+      $kpi_user->save();
       return response()->json("success");
     }
 }
