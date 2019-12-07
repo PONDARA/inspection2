@@ -26,7 +26,7 @@
             <div class="col-lg-0 col-sm-4">
                 
             </div>
-            <div class="col-lg-12 col-sm-4" >
+            <div class="col-lg-12" >
                 <form role="form" method="POST" action="{{route('locationAddMap')}}">
                     @csrf
                     <div class="form-group">
@@ -35,16 +35,16 @@
                     </div>
                     <div class="form-group row col-12">
                         <div class="col-4">
-                            <label for="city">Place</label>
-                        <input type="text" class="reg-input-city" id="city" name="location_name" required autofocus>
+                            <label for="city" style="display: block;">Place</label>
+                            <input type="text" class="reg-input-city" id="city" name="location_name" required autofocus>
                         </div>
                         <div class="col-4">
-                            <label for="lat">latitude</label>
-                        <input type="text" class="latitude" id="lat" name="latitude">
+                            <label for="lat" style="display: block;">latitude</label>
+                            <input type="text" class="latitude" id="lat" name="latitude">
                         </div>
                         <div class="col-4">
-                            <label for="long">longtitude</label>
-                        <input type="text" class="longtitude" id="long" name="longtitude">
+                            <label for="long" style="display: block;">longtitude</label>
+                            <input type="text" class="longtitude" id="long" name="longtitude">
                         </div>
                     </div>
                     <div class="row text-center">
