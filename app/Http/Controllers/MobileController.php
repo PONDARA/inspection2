@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\storage;
 use Illuminate\Support\Facades\DB;
 use App\Model\User_inspect;
 use App\Model\KpiUser;
+use App\Model\kpi;
 
 class MobileController extends Controller
 {
@@ -40,6 +41,10 @@ class MobileController extends Controller
         else {
             return response()->json(['token'=>'no access token','msg'=>'Incorrect email or password'], 401);
         } 
+    }
+    public function inspectionLoadGuard(Request $request)
+    {
+      
     }
     public function inspectionList(Request $request)
     {
@@ -132,5 +137,15 @@ class MobileController extends Controller
       ]);
       $kpi_user->save();
       return response()->json("success");
+    }
+    // load active kpi function###########################
+    public function kpiList(Request $request)
+    {
+      $kpiList= DB::table('kpi_question')
+      ->join('kpis', 'kpis.id', '=', 'kpi_question.kpi_id')
+      ->where('kpis.publish','=',1)
+      ->get(['max_score','kpis.id','kpis.title']);
+   return response(array('kpiLists'=>$kpiList));
+   
     }
 }
