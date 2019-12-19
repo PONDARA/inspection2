@@ -148,4 +148,14 @@ class MobileController extends Controller
    return response(array('kpiLists'=>$kpiList));
    
     }
+    // load active guard function###########################
+    public function guardList(Request $request)
+    {
+      $kpiList= DB::table('kpi_question')
+      ->join('kpis', 'kpis.id', '=', 'kpi_question.kpi_id')
+      ->where('kpis.publish','=',1)
+      ->get(['max_score','kpis.id','kpis.title']);
+   return response(array('kpiLists'=>$kpiList));
+   
+    }
 }
