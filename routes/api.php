@@ -20,5 +20,8 @@ Route::middleware('auth:api')->group(function(){
 	// kpi#######################################3333
 	Route::post('/kpiStore', 'MobileController@KPIstore')->name('kpiStore');
 	Route::get('/kpiList', 'MobileController@kpiList')->name('kpiList');
+
+	// kpi#######################################3333
+	Route::get('/guardList', 'MobileController@guardList')->name('guardList');
 });
 Route::post('login', 'MobileController@login')->name('login');

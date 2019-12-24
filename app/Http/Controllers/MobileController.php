@@ -151,11 +151,16 @@ class MobileController extends Controller
     // load active guard function###########################
     public function guardList(Request $request)
     {
-      $kpiList= DB::table('kpi_question')
-      ->join('kpis', 'kpis.id', '=', 'kpi_question.kpi_id')
-      ->where('kpis.publish','=',1)
-      ->get(['max_score','kpis.id','kpis.title']);
-   return response(array('kpiLists'=>$kpiList));
-   
+      $guardDones = DB::table('user_inspects')->join('users','users.id','=','user_inspects.guard_id')->where(DB::raw('substr(user_inspects.created_at,1,10)'),'=',date("Y-m-d"))->select('users.id')->get()->toArray();
+      foreach($guardDones as $guardDone ){
+          $array[] = $guardDone->id;
+        }
+      if(count($guardDones)>0){
+        $guardLists[] = DB::table('users')->whereNotIn('users.id',$array)->where('users.user_type_id','=',3)->get();
+      }
+      else{
+        $guardLists = DB::table('users')->where('users.user_type_id','=',3)->get();
+      }
+      return response(array('guardLists'=>$guardLists));
     }
 }
