@@ -142,9 +142,9 @@ class MobileController extends Controller
     public function kpiList(Request $request)
     {
       $kpiList= DB::table('kpi_question')
-      ->join('kpis', 'kpis.id', '=', 'kpi_question.kpi_id')
+      ->join('kpis', 'kpis.id', '=', 'kpi_question.kpi_id')->join('questions', 'kpi_question.question_id', '=', 'questions.id')
       ->where('kpis.publish','=',1)
-      ->get(['max_score','kpis.id','kpis.title']);
+      ->get(['max_score','kpis.id','kpis.title','question_id','question']);
    return response(array('kpiLists'=>$kpiList));
    
     }
