@@ -42,10 +42,10 @@ class MobileController extends Controller
             return response()->json(['token'=>'no access token','msg'=>'Incorrect email or password'], 401);
         } 
     }
-    public function inspectionLoadGuard(Request $request)
-    {
+    // public function inspectionLoadGuard(Request $request)
+    // {
       
-    }
+    // }
     public function inspectionList(Request $request)
     {
       // dd($request->all());
